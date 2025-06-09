@@ -3,20 +3,20 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Tong Sampah Cerdas</title>
+    <title>Tong Sampah Cerdas 2.0</title>
     <link rel="stylesheet" href="styles.css">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
 </head>
 <body>
     <div class="container">
         <div class="header text-center mb-4 md:mb-6">
-            <h1 class="text-3xl md:text-5xl font-bold text-gray-800 mb-1 md:mb-2">Tong Sampah Cerdas</h1>
-            <p class="text-md md:text-xl text-gray-600">Sistem Pemilahan Sampah Otomatis dengan AI</p>
-            <div class="flex items-center justify-center gap-2 mt-1">
-                <i class="fas fa-mobile-alt w-4 h-4 text-blue-500"></i>
-                <span class="text-xs text-blue-600">Mobile Ready</span>
-                <i class="fas fa-laptop w-4 h-4 ml-2 text-blue-500"></i>
-                <span class="text-xs text-blue-600">Desktop Optimized</span>
+            <h1 class="text-4xl md:text-6xl font-extrabold text-neon-green mb-2">Tong Sampah Cerdas 2.0</h1>
+            <p class="text-lg md:text-2xl text-cyber-blue">Sistem Pemilahan Sampah Futuristik</p>
+            <div class="flex items-center justify-center gap-3 mt-2">
+                <i class="fas fa-mobile-alt w-5 h-5 text-neon-blue"></i>
+                <span class="text-sm text-neon-blue">Mobile Ready</span>
+                <i class="fas fa-laptop w-5 h-5 ml-3 text-neon-blue"></i>
+                <span class="text-sm text-neon-blue">Desktop Optimized</span>
             </div>
         </div>
 
@@ -24,115 +24,102 @@
             <!-- Main 3D Trash Bin Visualization -->
             <div class="lg:col-span-3">
                 <div class="card h-full overflow-hidden">
-                    <div class="card-header p-3 md:p-6">
-                        <h2 class="card-title flex items-center gap-2 text-lg md:text-xl">
-                            <i class="fas fa-microchip w-5 h-5 text-blue-600"></i>
-                            Desain 3D Tong Sampah Cerdas
-                            <span id="current-waste-badge" class="badge badge-outline ml-2" style="display: none;"></span>
+                    <div class="card-header p-4 md:p-6">
+                        <h2 class="card-title flex items-center gap-2 text-xl md:text-2xl">
+                            <i class="fas fa-robot w-6 h-6 text-neon-purple"></i>
+                            Desain 3D Tong Sampah Futuristik
+                            <span id="current-waste-badge" class="badge badge-glow ml-2" style="display: none;"></span>
                         </h2>
                     </div>
-                    <div class="card-content p-2 md:p-6">
+                    <div class="card-content p-4 md:p-6">
                         <div class="relative">
                             <!-- 3D SVG Illustration -->
-                            <svg id="trash-bin-svg" viewBox="0 0 1200 800" class="w-full h-auto border rounded-lg bg-gradient-to-b from-gray-100 to-gray-200" style="min-height: 600px;" preserveAspectRatio="xMidYMid meet">
-                                <!-- 3D Base Shadow -->
-                                <ellipse cx="600" cy="750" rx="400" ry="40" fill="rgba(0,0,0,0.2)" />
+                            <svg id="trash-bin-svg" viewBox="0 0 1200 800" class="w-full h-auto border rounded-xl bg-gradient-to-br from-dark-space to-midnight-blue" style="min-height: 600px;" preserveAspectRatio="xMidYMid meet">
+                                <!-- Base Shadow -->
+                                <ellipse cx="600" cy="780" rx="450" ry="50" fill="rgba(0, 0, 0, 0.3)" />
 
                                 <!-- Main Container - 3D Effect -->
                                 <g>
-                                    <rect x="150" y="120" width="900" height="600" fill="#e2e8f0" stroke="#333" stroke-width="3" rx="15" />
-                                    <rect x="120" y="100" width="900" height="600" fill="#f8f9fa" stroke="#333" stroke-width="4" rx="15" />
-                                    <path d="M 1020 100 L 1050 120 L 1050 720 L 1020 700 Z" fill="#d1d5db" stroke="#333" stroke-width="2" />
-                                    <path d="M 120 100 L 150 120 L 1050 120 L 1020 100 Z" fill="#f3f4f6" stroke="#333" stroke-width="2" />
+                                    <rect x="100" y="100" width="1000" height="650" fill="#1e293b" stroke="#00ffcc" stroke-width="4" rx="20" />
+                                    <rect x="90" y="90" width="1000" height="650" fill="#0f172a" stroke="#00cc99" stroke-width="5" rx="20" />
+                                    <path d="M 1090 90 L 1100 100 L 1100 740 L 1090 730 Z" fill="#1e293b" stroke="#00cc99" stroke-width="3" />
+                                    <path d="M 90 90 L 100 100 L 1100 100 L 1090 90 Z" fill="#0f172a" stroke="#00cc99" stroke-width="3" />
                                 </g>
 
-                                <!-- 3D Lid -->
-                                <g id="lid" transform="" style="transform-origin: 560px 120px; transition: transform 0.8s ease-in-out;">
-                                    <rect x="110" y="80" width="920" height="50" fill="#374151" stroke="#333" stroke-width="3" rx="25" />
-                                    <rect x="100" y="70" width="920" height="50" fill="#4a5568" stroke="#333" stroke-width="3" rx="25" />
-                                    <path d="M 1020 70 L 1030 80 L 1030 130 L 1020 120 Z" fill="#2d3748" stroke="#333" stroke-width="2" />
-                                    <text x="560" y="105" text-anchor="middle" fill="white" font-size="24" font-weight="bold">TUTUP TONG SAMPAH CERDAS</text>
-                                    <circle cx="900" cy="95" r="25" id="voice-sensor-back" fill="#ef4444" />
-                                    <circle cx="905" cy="90" r="25" id="voice-sensor-front" fill="#dc2626" />
-                                    <text x="905" y="98" text-anchor="middle" fill="white" font-size="16" font-weight="bold">🎤</text>
+                                <!-- Futuristic Lid -->
+                                <g id="lid" transform="" style="transform-origin: 600px 100px; transition: transform 0.8s ease-in-out;">
+                                    <rect x="100" y="60" width="1000" height="60" fill="#4b5563" stroke="#00ffcc" stroke-width="4" rx="30" />
+                                    <rect x="90" y="50" width="1000" height="60" fill="#374151" stroke="#00cc99" stroke-width="5" rx="30" />
+                                    <path d="M 1090 50 L 1100 60 L 1100 120 L 1090 110 Z" fill="#2d3748" stroke="#00cc99" stroke-width="3" />
+                                    <text x="600" y="85" text-anchor="middle" fill="#00ffcc" font-size="28" font-weight="bold">TUTUP FUTURISTIK</text>
+                                    <circle cx="950" cy="75" r="30" id="voice-sensor-back" fill="#ff007a" />
+                                    <circle cx="955" cy="70" r="30" id="voice-sensor-front" fill="#ff00cc" />
+                                    <text x="955" y="78" text-anchor="middle" fill="white" font-size="18" font-weight="bold">🎤</text>
                                 </g>
 
-                                <!-- Layer 1 - 3D Sorting Area -->
+                                <!-- Sorting Area -->
                                 <g>
-                                    <rect x="160" y="180" width="840" height="220" fill="#e2e8f0" stroke="#333" stroke-width="3" />
-                                    <rect x="150" y="170" width="840" height="220" fill="#f1f5f9" stroke="#333" stroke-width="3" />
-                                    <text x="570" y="200" text-anchor="middle" font-size="20" font-weight="bold">LAPIS 1 - AREA PEMILAHAN</text>
-
-                                    <!-- Sekat 1 -->
-                                    <rect x="190" y="230" width="350" height="140" fill="#fef3c7" stroke="#333" stroke-width="2" />
-                                    <rect x="180" y="220" width="350" height="140" fill="#fbbf24" stroke="#333" stroke-width="2" />
-                                    <text x="355" y="250" text-anchor="middle" font-size="16" font-weight="bold">SEKAT 1</text>
-                                    <text x="355" y="270" text-anchor="middle" font-size="14">Tempat Sampah Awal</text>
-                                    <g id="sekat-1-wastes"></g>
-                                    <text id="sekat-1-empty" x="355" y="320" text-anchor="middle" font-size="14" opacity="0.5" fill="#666" style="display: none;">KOSONG - Masukkan Sampah</text>
-
-                                    <!-- Sekat 2 -->
-                                    <rect x="620" y="230" width="350" height="140" fill="#ddd6fe" stroke="#333" stroke-width="2" />
-                                    <rect x="610" y="220" width="350" height="140" fill="#c4b5fd" stroke="#333" stroke-width="2" />
-                                    <text x="785" y="250" text-anchor="middle" font-size="16" font-weight="bold">SEKAT 2</text>
-                                    <text x="785" y="270" text-anchor="middle" font-size="14">Area Transfer</text>
-                                    <g id="sekat-2-wastes"></g>
+                                    <rect x="150" y="180" width="900" height="250" fill="#1e293b" stroke="#00ffcc" stroke-width="4" />
+                                    <rect x="140" y="170" width="900" height="250" fill="#0f172a" stroke="#00cc99" stroke-width="5" />
+                                    <text x="600" y="200" text-anchor="middle" font-size="24" fill="#00ffcc">AREA PEMILAHAN OTOMATIS</text>
+                                    <g id="sorting-area"></g>
                                 </g>
 
-                                <!-- Connection Pipes -->
-                                <g id="pipes"></g>
-
-                                <!-- Animated waste moving through pipe -->
-                                <g id="pipe-wastes" style="display: none;">
-                                    <circle id="pipe-waste-circle" cx="0" cy="0" r="20" fill="rgba(255,255,255,0.8)" stroke="#333" stroke-width="2" />
-                                    <g id="pipe-waste-icons"></g>
-                                </g>
-
-                                <!-- Layer 2 - 3D Waste Categories -->
+                                <!-- Waste Compartments -->
                                 <g>
-                                    <rect x="160" y="500" width="840" height="180" fill="#e5e7eb" stroke="#333" stroke-width="3" />
-                                    <rect x="150" y="490" width="840" height="180" fill="#f9fafb" stroke="#333" stroke-width="3" />
-                                    <text x="570" y="520" text-anchor="middle" font-size="20" font-weight="bold">LAPIS 2 - KATEGORI SAMPAH</text>
+                                    <rect x="150" y="500" width="900" height="200" fill="#1e293b" stroke="#00ffcc" stroke-width="4" />
+                                    <rect x="140" y="490" width="900" height="200" fill="#0f172a" stroke="#00cc99" stroke-width="5" />
+                                    <text x="600" y="520" text-anchor="middle" font-size="24" fill="#00ffcc">KOMPARTEMEN SAMPAH</text>
                                     <g id="waste-compartments"></g>
                                 </g>
 
-                                <!-- 3D Compression System -->
-                                <g>
-                                    <rect x="170" y="690" width="800" height="30" fill="#374151" rx="15" />
-                                    <rect x="160" y="680" width="800" height="30" fill="#4b5563" rx="15" />
-                                    <text x="560" y="700" text-anchor="middle" font-size="14" fill="white" font-weight="bold">TRACK MESIN PENEKAN OTOMATIS</text>
-                                    <g id="compressor" transform="translate(180, 0)" class="transition-transform duration-1000">
-                                        <rect x="10" y="650" width="60" height="50" fill="#dc2626" rx="8" class="compressor-part transition-all duration-500" />
-                                        <rect x="0" y="640" width="60" height="50" fill="#ef4444" rx="8" class="compressor-part transition-all duration-500" />
-                                        <rect x="20" y="620" width="40" height="20" fill="#991b1b" rx="5" />
-                                        <text x="30" y="670" text-anchor="middle" font-size="12" fill="white" font-weight="bold">PRESS</text>
-                                    </g>
+                                <!-- Dual Grippers -->
+                                <g id="gripper-1" transform="translate(0, 0)" class="transition-transform duration-1000">
+                                    <rect x="550" y="250" width="100" height="30" fill="#ff007a" rx="15" />
+                                    <rect x="560" y="220" width="80" height="50" fill="#1e293b" rx="10" />
+                                    <circle cx="600" cy="210" r="20" fill="#ff00cc" />
+                                    <path id="gripper-1-arm-left" d="M 580 280 L 570 310 L 575 315 L 585 285 Z" fill="#ff007a" />
+                                    <path id="gripper-1-arm-right" d="M 620 280 L 630 310 L 625 315 L 615 285 Z" fill="#ff007a" />
+                                    <g id="gripper-1-waste"></g>
+                                    <path id="gripper-1-claw-left" d="M 570 310 L 565 320 M 575 315 L 580 325" stroke="#ff00cc" stroke-width="5" stroke-linecap="round" />
+                                    <path id="gripper-1-claw-right" d="M 630 310 L 635 320 M 625 315 L 620 325" stroke="#ff00cc" stroke-width="5" stroke-linecap="round" />
+                                </g>
+                                <g id="gripper-2" transform="translate(0, 0)" class="transition-transform duration-1000">
+                                    <rect x="550" y="250" width="100" height="30" fill="#00ffcc" rx="15" />
+                                    <rect x="560" y="220" width="80" height="50" fill="#1e293b" rx="10" />
+                                    <circle cx="600" cy="210" r="20" fill="#00cc99" />
+                                    <path id="gripper-2-arm-left" d="M 580 280 L 570 310 L 575 315 L 585 285 Z" fill="#00ffcc" />
+                                    <path id="gripper-2-arm-right" d="M 620 280 L 630 310 L 625 315 L 615 285 Z" fill="#00ffcc" />
+                                    <g id="gripper-2-waste"></g>
+                                    <path id="gripper-2-claw-left" d="M 570 310 L 565 320 M 575 315 L 580 325" stroke="#00cc99" stroke-width="5" stroke-linecap="round" />
+                                    <path id="gripper-2-claw-right" d="M 630 310 L 635 320 M 625 315 L 620 325" stroke="#00cc99" stroke-width="5" stroke-linecap="round" />
                                 </g>
 
-                                <!-- Robotic Gripper -->
-                                <g id="gripper" transform="translate(0, 0)" class="transition-transform duration-1000">
-                                    <rect x="560" y="280" width="80" height="20" fill="#ef4444" rx="10" />
-                                    <rect x="570" y="250" width="60" height="40" fill="#374151" rx="5" />
-                                    <circle cx="600" cy="240" r="15" fill="#6b7280" />
-                                    <path id="gripper-arm-left" d="M 580 300 L 570 330 L 575 335 L 585 305 Z" fill="#ef4444" />
-                                    <path id="gripper-arm-right" d="M 620 300 L 630 330 L 625 335 L 615 305 Z" fill="#ef4444" />
-                                    <g id="gripper-waste"></g>
-                                    <path id="gripper-claw-left" d="M 570 330 L 565 340 M 575 335 L 580 345" stroke="#dc2626" stroke-width="4" stroke-linecap="round" />
-                                    <path id="gripper-claw-right" d="M 630 330 L 635 340 M 625 335 L 620 345" stroke="#dc2626" stroke-width="4" stroke-linecap="round" />
+                                <!-- Compression System -->
+                                <g>
+                                    <rect x="170" y="720" width="860" height="40" fill="#4b5563" rx="20" />
+                                    <rect x="160" y="710" width="860" height="40" fill="#374151" rx="20" />
+                                    <text x="600" y="730" text-anchor="middle" font-size="16" fill="#00ffcc" font-weight="bold">MESIN TEKAN OTOMATIS</text>
+                                    <g id="compressor" transform="translate(180, 0)" class="transition-transform duration-1000">
+                                        <rect x="10" y="670" width="70" height="60" fill="#ff007a" rx="10" class="compressor-part transition-all duration-500" />
+                                        <rect x="0" y="660" width="70" height="60" fill="#ff00cc" rx="10" class="compressor-part transition-all duration-500" />
+                                        <rect x="20" y="640" width="50" height="20" fill="#cc00ff" rx="5" />
+                                        <text x="35" y="690" text-anchor="middle" font-size="14" fill="white" font-weight="bold">COMPRESS</text>
+                                    </g>
                                 </g>
                             </svg>
 
                             <!-- Control Buttons -->
                             <div class="flex justify-center gap-4 mt-4 flex-wrap">
-                                <button id="toggle-lid-btn" class="btn h-14 text-lg font-bold px-8 bg-green-500 hover:bg-green-600">
+                                <button id="toggle-lid-btn" class="btn h-16 text-xl font-bold px-10 bg-neon-green hover:bg-neon-dark-green">
                                     <i class="fas fa-microphone w-6 h-6 mr-2"></i>
                                     🟢 Buka Tutup Tong
                                 </button>
-                                <button id="toggle-voice-btn" class="btn h-14 text-lg font-bold px-8 bg-gray-500 hover:bg-gray-600">
+                                <button id="toggle-voice-btn" class="btn h-16 text-xl font-bold px-10 bg-cyber-blue hover:bg-cyber-dark-blue">
                                     <i class="fas fa-microphone w-6 h-6 mr-2"></i>
-                                    🎤 Suara
+                                    🎤 Aktifkan Suara
                                 </button>
-                                <button id="clear-all-btn" class="btn h-14 text-lg font-bold px-6 bg-gray-500 hover:bg-gray-600">
+                                <button id="clear-all-btn" class="btn h-16 text-xl font-bold px-8 bg-gray-700 hover:bg-gray-800">
                                     🗑️ Reset Sistem
                                 </button>
                             </div>
@@ -145,49 +132,49 @@
             <div class="space-y-4">
                 <!-- Waste Throwing Simulation -->
                 <div class="card">
-                    <div class="card-header p-3 md:p-6">
-                        <h2 class="card-title flex items-center gap-2 text-base md:text-lg">
-                            <i class="fas fa-trash w-5 h-5 text-green-600"></i>
+                    <div class="card-header p-4 md:p-6">
+                        <h2 class="card-title flex items-center gap-2 text-lg md:text-xl">
+                            <i class="fas fa-trash w-6 h-6 text-neon-green"></i>
                             Simulasi Buang Sampah (20 Jenis)
                         </h2>
                     </div>
-                    <div class="card-content p-3 md:p-6 max-h-50vh md:max-h-none overflow-y-auto">
-                        <div class="text-sm text-gray-600 mb-4">Pilih sampah yang ingin dibuang:</div>
-                        <div id="waste-buttons" class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-1 gap-2"></div>
+                    <div class="card-content p-4 md:p-6 max-h-50vh md:max-h-none overflow-y-auto">
+                        <div class="text-sm text-gray-300 mb-3">Pilih sampah yang ingin dibuang:</div>
+                        <div id="waste-buttons" class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-1 gap-3"></div>
                     </div>
                 </div>
 
                 <!-- Waste Queue Display -->
                 <div id="waste-queue-card" class="card" style="display: none;">
-                    <div class="card-header p-3 md:p-6">
-                        <h2 class="card-title flex items-center gap-2 text-base md:text-lg">
-                            <i class="fas fa-trash w-5 h-5 text-orange-600"></i>
+                    <div class="card-header p-4 md:p-6">
+                        <h2 class="card-title flex items-center gap-2 text-lg md:text-xl">
+                            <i class="fas fa-trash w-6 h-6 text-neon-orange"></i>
                             Antrian Sampah (<span id="queue-count">0</span>)
                         </h2>
                     </div>
-                    <div class="card-content p-3 md:p-6 space-y-2 max-h-30vh overflow-y-auto">
-                        <div class="text-sm text-gray-600 mb-2">Tutup tong sampah untuk memulai proses pemilahan:</div>
+                    <div class="card-content p-4 md:p-6 space-y-2 max-h-30vh overflow-y-auto">
+                        <div class="text-sm text-gray-300 mb-2">Tutup tong untuk memulai pemilahan:</div>
                         <div id="waste-queue"></div>
                     </div>
                 </div>
 
                 <!-- Waste Storage Status -->
                 <div class="card">
-                    <div class="card-header p-3 md:p-6">
-                        <h2 class="card-title text-base md:text-lg">Status Tong Sampah</h2>
+                    <div class="card-header p-4 md:p-6">
+                        <h2 class="card-title text-lg md:text-xl">Status Kompartemen</h2>
                     </div>
-                    <div class="card-content p-3 md:p-6 space-y-2" id="waste-storage"></div>
+                    <div class="card-content p-4 md:p-6 space-y-2" id="waste-storage"></div>
                 </div>
 
                 <!-- Process Status -->
                 <div id="process-status-card" class="card" style="display: none;">
-                    <div class="card-header p-3 md:p-6">
-                        <h2 class="card-title flex items-center gap-2 text-base md:text-lg">
-                            <i id="process-icon" class="fas fa-pause w-5 h-5 text-green-600"></i>
+                    <div class="card-header p-4 md:p-6">
+                        <h2 class="card-title flex items-center gap-2 text-lg md:text-xl">
+                            <i id="process-icon" class="fas fa-pause w-6 h-6 text-neon-purple"></i>
                             Proses Pemilahan
                         </h2>
                     </div>
-                    <div class="card-content p-3 md:p-6 space-y-2 max-h-30vh overflow-y-auto" id="process-status"></div>
+                    <div class="card-content p-4 md:p-6 space-y-2 max-h-30vh overflow-y-auto" id="process-status"></div>
                 </div>
             </div>
         </div>
