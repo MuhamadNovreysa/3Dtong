@@ -1,34 +1,34 @@
-// Waste types
+// Waste types with detailed positions
 const wasteTypes = [
-    { name: "Organik", color: "#00ffcc", icon: "🍌", x: 200, y: 600 },
-    { name: "Anorganik", color: "#00ccff", icon: "🥤", x: 380, y: 600 },
-    { name: "B3", color: "#ff007a", icon: "🔋", x: 560, y: 600 },
-    { name: "Kertas", color: "#ff9900", icon: "📄", x: 740, y: 600 },
-    { name: "Residu", color: "#cc00ff", icon: "🗑️", x: 920, y: 600 },
+    { name: "Organik", color: "#00ffcc", icon: "🍌", x: 250, y: 500 },
+    { name: "Anorganik", color: "#00ccff", icon: "🥤", x: 400, y: 500 },
+    { name: "B3", color: "#ff007a", icon: "🔋", x: 550, y: 500 },
+    { name: "Kertas", color: "#ff9900", icon: "📄", x: 700, y: 500 },
+    { name: "Residu", color: "#cc00ff", icon: "🗑️", x: 850, y: 500 },
 ];
 
-// Available waste items
+// Available waste items with detailed properties
 const availableWaste = [
-    { id: "1", name: "Kulit Pisang", icon: "🍌", category: "Organik", color: "#00ffcc" },
-    { id: "2", name: "Botol Plastik", icon: "🥤", category: "Anorganik", color: "#00ccff" },
-    { id: "3", name: "Baterai Bekas", icon: "🔋", category: "B3", color: "#ff007a" },
-    { id: "4", name: "Kertas Koran", icon: "📄", category: "Kertas", color: "#ff9900" },
-    { id: "5", name: "Puntung Rokok", icon: "🚬", category: "Residu", color: "#cc00ff" },
-    { id: "6", name: "Sisa Nasi", icon: "🍚", category: "Organik", color: "#00ffcc" },
-    { id: "7", name: "Kulit Jeruk", icon: "🍊", category: "Organik", color: "#00ffcc" },
-    { id: "8", name: "Daun Kering", icon: "🍂", category: "Organik", color: "#00ffcc" },
-    { id: "9", name: "Sisa Sayuran", icon: "🥬", category: "Organik", color: "#00ffcc" },
-    { id: "10", name: "Tulang Ayam", icon: "🍗", category: "Organik", color: "#00ffcc" },
-    { id: "11", name: "Kaleng Soda", icon: "🥫", category: "Anorganik", color: "#00ccff" },
-    { id: "12", name: "Botol Kaca", icon: "🍾", category: "Anorganik", color: "#00ccff" },
-    { id: "13", name: "Plastik Kemasan", icon: "📦", category: "Anorganik", color: "#00ccff" },
-    { id: "14", name: "Sendok Plastik", icon: "🥄", category: "Anorganik", color: "#00ccff" },
-    { id: "15", name: "Gelas Plastik", icon: "🥤", category: "Anorganik", color: "#00ccff" },
-    { id: "16", name: "HP Rusak", icon: "📱", category: "B3", color: "#ff007a" },
-    { id: "17", name: "Lampu Bohlam", icon: "💡", category: "B3", color: "#ff007a" },
-    { id: "18", name: "Aki Bekas", icon: "🔋", category: "B3", color: "#ff007a" },
-    { id: "19", name: "Kardus Bekas", icon: "📦", category: "Kertas", color: "#ff9900" },
-    { id: "20", name: "Majalah Lama", icon: "📖", category: "Kertas", color: "#ff9900" },
+    { id: "1", name: "Kulit Pisang", icon: "🍌", category: "Organik", color: "#00ffcc", weight: 0.1, size: "small" },
+    { id: "2", name: "Botol Plastik", icon: "🥤", category: "Anorganik", color: "#00ccff", weight: 0.2, size: "medium" },
+    { id: "3", name: "Baterai Bekas", icon: "🔋", category: "B3", color: "#ff007a", weight: 0.15, size: "small" },
+    { id: "4", name: "Kertas Koran", icon: "📄", category: "Kertas", color: "#ff9900", weight: 0.3, size: "large" },
+    { id: "5", name: "Puntung Rokok", icon: "🚬", category: "Residu", color: "#cc00ff", weight: 0.05, size: "tiny" },
+    { id: "6", name: "Sisa Nasi", icon: "🍚", category: "Organik", color: "#00ffcc", weight: 0.25, size: "medium" },
+    { id: "7", name: "Kulit Jeruk", icon: "🍊", category: "Organik", color: "#00ffcc", weight: 0.15, size: "small" },
+    { id: "8", name: "Daun Kering", icon: "🍂", category: "Organik", color: "#00ffcc", weight: 0.1, size: "small" },
+    { id: "9", name: "Sisa Sayuran", icon: "🥬", category: "Organik", color: "#00ffcc", weight: 0.2, size: "medium" },
+    { id: "10", name: "Tulang Ayam", icon: "🍗", category: "Organik", color: "#00ffcc", weight: 0.3, size: "large" },
+    { id: "11", name: "Kaleng Soda", icon: "🥫", category: "Anorganik", color: "#00ccff", weight: 0.4, size: "large" },
+    { id: "12", name: "Botol Kaca", icon: "🍾", category: "Anorganik", color: "#00ccff", weight: 0.5, size: "large" },
+    { id: "13", name: "Plastik Kemasan", icon: "📦", category: "Anorganik", color: "#00ccff", weight: 0.2, size: "medium" },
+    { id: "14", name: "Sendok Plastik", icon: "🥄", category: "Anorganik", color: "#00ccff", weight: 0.1, size: "small" },
+    { id: "15", name: "Gelas Plastik", icon: "🥤", category: "Anorganik", color: "#00ccff", weight: 0.15, size: "medium" },
+    { id: "16", name: "HP Rusak", icon: "📱", category: "B3", color: "#ff007a", weight: 0.3, size: "large" },
+    { id: "17", name: "Lampu Bohlam", icon: "💡", category: "B3", color: "#ff007a", weight: 0.2, size: "medium" },
+    { id: "18", name: "Aki Bekas", icon: "🔋", category: "B3", color: "#ff007a", weight: 0.5, size: "large" },
+    { id: "19", name: "Kardus Bekas", icon: "📦", category: "Kertas", color: "#ff9900", weight: 0.4, size: "large" },
+    { id: "20", name: "Majalah Lama", icon: "📖", category: "Kertas", color: "#ff9900", weight: 0.3, size: "large" },
 ];
 
 // State variables
@@ -42,29 +42,34 @@ let recognition = null;
 let lastCommandTime = 0;
 let commandCooldown = 0;
 let isRecognitionRunning = false;
+let systemStatus = "Idle";
 
 // Animation states for dual grippers
 let gripper1State = {
-    x: 600,
+    x: 150,
     y: 200,
     hasWaste: false,
-    targetX: 600,
+    targetX: 150,
     targetY: 200,
     wasteIcons: [],
     wasteCategory: "",
     isMoving: false,
+    speed: 10,
+    track: "left",
 };
 let gripper2State = {
-    x: 600,
+    x: 1050,
     y: 200,
     hasWaste: false,
-    targetX: 600,
+    targetX: 1050,
     targetY: 200,
     wasteIcons: [],
     wasteCategory: "",
     isMoving: false,
+    speed: 10,
+    track: "right",
 };
-let compressorState = { position: 0, active: false };
+let compressorState = { position: 0, active: false, power: 0 };
 
 // Utility functions
 const isMobile = () => window.innerWidth < 768;
@@ -79,6 +84,13 @@ const showToast = (title, description, variant = "default") => {
     `;
     toastContainer.appendChild(toast);
     setTimeout(() => toast.remove(), 3000);
+};
+
+const updateTime = () => {
+    const now = new Date();
+    const timeString = now.toLocaleTimeString('id-ID', { hour: '2-digit', minute: '2-digit', hour12: true }) + " WIB";
+    document.getElementById('current-time').textContent = timeString;
+    setTimeout(updateTime, 1000);
 };
 
 const checkMicrophonePermission = async () => {
@@ -219,13 +231,14 @@ const getCategoryPosition = (category) => {
 };
 
 const addWasteToStorage = (waste) => {
-    storedWastes[waste.category].push({ id: `${waste.id}-${Date.now()}`, icon: waste.icon, category: waste.category });
+    storedWastes[waste.category].push({ id: `${waste.id}-${Date.now()}`, icon: waste.icon, category: waste.category, weight: waste.weight });
     updateWasteStorage();
+    logSystem(`Sampah ${waste.name} ditambahkan ke ${waste.category}`);
 };
 
 const animateGripper = async (gripperState, targetX, targetY, waste) => {
     gripperState.isMoving = true;
-    const step = 10;
+    const step = gripperState.speed;
     while (Math.abs(gripperState.x - targetX) > step || Math.abs(gripperState.y - targetY) > step) {
         gripperState.x += (targetX - gripperState.x) > 0 ? step : -step;
         gripperState.y += (targetY - gripperState.y) > 0 ? step : -step;
@@ -253,7 +266,9 @@ const processWasteQueue = async () => {
     if (wasteQueue.length === 0) return;
 
     isProcessing = true;
+    systemStatus = "Processing";
     updateProcessStatus();
+    updateSystemStatus();
 
     for (let i = 0; i < wasteQueue.length; i++) {
         const waste = wasteQueue[i];
@@ -268,10 +283,10 @@ const processWasteQueue = async () => {
         sortingProcess.push(`🤖 Gripper ${gripper === gripper1State ? 1 : 2} memproses: ${waste.name}`);
         updateProcessStatus();
 
-        await animateGripper(gripper, 600, 200, waste); // Pick up
+        await animateGripper(gripper, gripper.track === "left" ? 150 : 1050, 200, waste); // Pick up
         await animateGripper(gripper, categoryPos.x, categoryPos.y); // Move to compartment
         await animateGripper(gripper, categoryPos.x, categoryPos.y, null); // Drop
-        await animateGripper(gripper, 600, 200); // Return
+        await animateGripper(gripper, gripper.track === "left" ? 150 : 1050, 200); // Return
 
         wasteQueue.splice(i, 1);
         updateWasteQueue();
@@ -280,8 +295,10 @@ const processWasteQueue = async () => {
     }
 
     isProcessing = false;
+    systemStatus = "Idle";
     sortingProcess.push("✅ Pemilahan selesai!");
     updateProcessStatus();
+    updateSystemStatus();
     showToast("Proses Selesai", "Semua sampah dipilah!", "default");
 };
 
@@ -293,6 +310,7 @@ const throwWaste = (waste) => {
     wasteQueue.push(waste);
     showToast("Sampah Ditambahkan", `${waste.name} di antrian. Total: ${wasteQueue.length}`, "default");
     updateWasteQueue();
+    logSystem(`Sampah ${waste.name} ditambahkan ke antrian`);
 };
 
 const toggleLid = async () => {
@@ -304,20 +322,42 @@ const toggleLid = async () => {
     showToast("Tutup", isLidOpen ? "Terbuka - Masukkan sampah" : "Tertutup - Memulai pemilahan", "default");
     updateLid();
     if (!isLidOpen && wasteQueue.length > 0) await processWasteQueue();
+    logSystem(`Tutup ${isLidOpen ? 'dibuka' : 'ditutup'}`);
+};
+
+const toggleCompressor = async () => {
+    if (compressorState.active || isProcessing) return;
+    compressorState.active = true;
+    compressorState.power = 0;
+    const maxPower = 100;
+    const compressor = document.getElementById('compressor');
+    while (compressorState.power < maxPower) {
+        compressorState.power += 5;
+        compressorState.position = compressorState.power / maxPower;
+        updateAnimationState();
+        await new Promise(resolve => setTimeout(resolve, 50));
+    }
+    compressorState.active = false;
+    compressorState.power = 0;
+    compressorState.position = 0;
+    updateAnimationState();
+    showToast("Kompresi Selesai", "Sampah telah dikompres!", "default");
+    logSystem("Mesin tekan diaktifkan dan selesai");
 };
 
 const clearAllWaste = () => {
     wasteQueue = [];
     storedWastes = { Organik: [], Anorganik: [], B3: [], Kertas: [], Residu: [] };
-    gripper1State = { x: 600, y: 200, hasWaste: false, targetX: 600, targetY: 200, wasteIcons: [], wasteCategory: "", isMoving: false };
-    gripper2State = { x: 600, y: 200, hasWaste: false, targetX: 600, targetY: 200, wasteIcons: [], wasteCategory: "", isMoving: false };
-    compressorState = { position: 0, active: false };
+    gripper1State = { x: 150, y: 200, hasWaste: false, targetX: 150, targetY: 200, wasteIcons: [], wasteCategory: "", isMoving: false, speed: 10, track: "left" };
+    gripper2State = { x: 1050, y: 200, hasWaste: false, targetX: 1050, targetY: 200, wasteIcons: [], wasteCategory: "", isMoving: false, speed: 10, track: "right" };
+    compressorState = { position: 0, active: false, power: 0 };
     sortingProcess = [];
     updateWasteQueue();
     updateWasteStorage();
     updateProcessStatus();
     updateAnimationState();
     showToast("Sistem Direset", "Semua data dibersihkan", "default");
+    logSystem("Sistem direset sepenuhnya");
 };
 
 // DOM update functions
@@ -348,6 +388,7 @@ const updateWasteButtons = () => {
                 <span class="text-2xl">${waste.icon}</span>
                 <div class="flex-1">
                     <div class="font-bold text-sm">${waste.name} → ${waste.category}</div>
+                    <div class="text-xs text-gray-400">Berat: ${waste.weight}kg, Ukuran: ${waste.size}</div>
                 </div>
             </div>
         </button>
@@ -367,6 +408,7 @@ const updateWasteQueue = () => {
                 <span class="badge">${index + 1}</span>
                 <span class="text-xl">${waste.icon}</span>
                 <span class="text-sm font-medium">${waste.name}</span>
+                <span class="text-xs text-gray-400">(${waste.weight}kg)</span>
             </div>
         `).join('')}
     ` : '';
@@ -383,17 +425,18 @@ const updateWasteStorage = () => {
             <div class="flex items-center gap-1">
                 <span class="text-sm">${storedWastes[waste.name].length} item</span>
                 ${storedWastes[waste.name].slice(0, 3).map(item => `<span class="text-lg">${item.icon}</span>`).join('')}
+                <span class="text-xs text-gray-400">Total Berat: ${storedWastes[waste.name].reduce((sum, w) => sum + w.weight, 0).toFixed(2)}kg</span>
             </div>
         </div>
     `).join('');
     const compartments = document.getElementById('waste-compartments');
     compartments.innerHTML = wasteTypes.map((waste, index) => `
         <g>
-            <rect x="${waste.x - 50}" y="565" width="100" height="135" fill="${waste.color}" fill-opacity="0.3" stroke="${waste.color}" stroke-width="4" />
-            <rect x="${waste.x - 60}" y="555" width="100" height="135" fill="${waste.color}" fill-opacity="0.2" stroke="${waste.color}" stroke-width="5" />
-            <text x="${waste.x - 5}" y="585" text-anchor="middle" font-size="16" fill="${waste.color}">${waste.name}</text>
+            <rect x="${waste.x - 50}" y="500" width="100" height="200" fill="${waste.color}" fill-opacity="0.3" stroke="${waste.color}" stroke-width="4" />
+            <rect x="${waste.x - 60}" y="490" width="100" height="200" fill="${waste.color}" fill-opacity="0.2" stroke="${waste.color}" stroke-width="5" />
+            <text x="${waste.x - 5}" y="510" text-anchor="middle" font-size="16" fill="${waste.color}">${waste.name}</text>
             ${storedWastes[waste.name].map((storedWaste, i) => `
-                <text x="${waste.x - 50 + (i % 2) * 40}" y="${615 + Math.floor(i / 2) * 30}" text-anchor="middle" font-size="24">${storedWaste.icon}</text>
+                <text x="${waste.x - 50 + (i % 2) * 40}" y="${540 + Math.floor(i / 2) * 30}" text-anchor="middle" font-size="24">${storedWaste.icon}</text>
             `).join('')}
         </g>
     `).join('');
@@ -421,32 +464,46 @@ const updateProcessStatus = () => {
     }
 };
 
+const updateSystemStatus = () => {
+    document.getElementById('system-status').textContent = systemStatus;
+};
+
+const logSystem = (message) => {
+    const logs = document.getElementById('system-logs');
+    const logEntry = document.createElement('div');
+    logEntry.className = 'text-xs text-gray-400 p-1 bg-gray-800 rounded';
+    logEntry.textContent = `[${new Date().toLocaleTimeString('id-ID', { hour: '2-digit', minute: '2-digit', second: '2-digit' })}] ${message}`;
+    logs.appendChild(logEntry);
+    if (logs.childElementCount > 20) logs.removeChild(logs.firstChild);
+    logs.scrollTop = logs.scrollHeight;
+};
+
 const updateAnimationState = () => {
     const gripper1 = document.getElementById('gripper-1');
-    gripper1.setAttribute('transform', `translate(${gripper1State.x - 600}, ${gripper1State.y - 200})`);
+    gripper1.setAttribute('transform', `translate(${gripper1State.x - 150}, ${gripper1State.y - 200})`);
     const gripper1ArmLeft = document.getElementById('gripper-1-arm-left');
     const gripper1ArmRight = document.getElementById('gripper-1-arm-right');
     const gripper1ClawLeft = document.getElementById('gripper-1-claw-left');
     const gripper1ClawRight = document.getElementById('gripper-1-claw-right');
-    gripper1ArmLeft.setAttribute('d', gripper1State.hasWaste ? "M 585 230 L 580 260 L 585 265 L 590 235 Z" : "M 580 230 L 570 260 L 575 265 L 585 235 Z");
-    gripper1ArmRight.setAttribute('d', gripper1State.hasWaste ? "M 615 230 L 620 260 L 615 265 L 610 235 Z" : "M 620 230 L 630 260 L 625 265 L 615 235 Z");
-    gripper1ClawLeft.setAttribute('d', gripper1State.hasWaste ? "M 580 260 L 575 265 M 585 265 L 580 270" : "M 570 260 L 565 270 M 575 265 L 580 275");
-    gripper1ClawRight.setAttribute('d', gripper1State.hasWaste ? "M 620 260 L 625 265 M 615 265 L 620 270" : "M 630 260 L 635 270 M 625 265 L 620 275");
+    gripper1ArmLeft.setAttribute('d', gripper1State.hasWaste ? "M 135 230 L 130 260 L 135 265 L 140 235 Z" : "M 130 230 L 120 260 L 125 265 L 135 235 Z");
+    gripper1ArmRight.setAttribute('d', gripper1State.hasWaste ? "M 165 230 L 170 260 L 165 265 L 160 235 Z" : "M 170 230 L 180 260 L 175 265 L 165 235 Z");
+    gripper1ClawLeft.setAttribute('d', gripper1State.hasWaste ? "M 130 260 L 125 265 M 135 265 L 130 270" : "M 120 260 L 115 270 M 125 265 L 130 275");
+    gripper1ClawRight.setAttribute('d', gripper1State.hasWaste ? "M 170 260 L 175 265 M 165 265 L 170 270" : "M 180 260 L 185 270 M 175 265 L 170 275");
     const gripper1Waste = document.getElementById('gripper-1-waste');
-    gripper1Waste.innerHTML = gripper1State.hasWaste ? gripper1State.wasteIcons.map((icon, i) => `<text x="600" y="${210 + i * 20}" text-anchor="middle" font-size="24">${icon}</text>`).join('') : '';
+    gripper1Waste.innerHTML = gripper1State.hasWaste ? gripper1State.wasteIcons.map((icon, i) => `<text x="150" y="${210 + i * 20}" text-anchor="middle" font-size="24">${icon}</text>`).join('') : '';
 
     const gripper2 = document.getElementById('gripper-2');
-    gripper2.setAttribute('transform', `translate(${gripper2State.x - 600}, ${gripper2State.y - 200})`);
+    gripper2.setAttribute('transform', `translate(${gripper2State.x - 1050}, ${gripper2State.y - 200})`);
     const gripper2ArmLeft = document.getElementById('gripper-2-arm-left');
     const gripper2ArmRight = document.getElementById('gripper-2-arm-right');
     const gripper2ClawLeft = document.getElementById('gripper-2-claw-left');
     const gripper2ClawRight = document.getElementById('gripper-2-claw-right');
-    gripper2ArmLeft.setAttribute('d', gripper2State.hasWaste ? "M 585 230 L 580 260 L 585 265 L 590 235 Z" : "M 580 230 L 570 260 L 575 265 L 585 235 Z");
-    gripper2ArmRight.setAttribute('d', gripper2State.hasWaste ? "M 615 230 L 620 260 L 615 265 L 610 235 Z" : "M 620 230 L 630 260 L 625 265 L 615 235 Z");
-    gripper2ClawLeft.setAttribute('d', gripper2State.hasWaste ? "M 580 260 L 575 265 M 585 265 L 580 270" : "M 570 260 L 565 270 M 575 265 L 580 275");
-    gripper2ClawRight.setAttribute('d', gripper2State.hasWaste ? "M 620 260 L 625 265 M 615 265 L 620 270" : "M 630 260 L 635 270 M 625 265 L 620 275");
+    gripper2ArmLeft.setAttribute('d', gripper2State.hasWaste ? "M 1035 230 L 1030 260 L 1035 265 L 1040 235 Z" : "M 1030 230 L 1020 260 L 1025 265 L 1035 235 Z");
+    gripper2ArmRight.setAttribute('d', gripper2State.hasWaste ? "M 1065 230 L 1070 260 L 1065 265 L 1060 235 Z" : "M 1070 230 L 1080 260 L 1075 265 L 1065 235 Z");
+    gripper2ClawLeft.setAttribute('d', gripper2State.hasWaste ? "M 1030 260 L 1025 265 M 1035 265 L 1030 270" : "M 1020 260 L 1015 270 M 1025 265 L 1030 275");
+    gripper2ClawRight.setAttribute('d', gripper2State.hasWaste ? "M 1070 260 L 1075 265 M 1065 265 L 1070 270" : "M 1080 260 L 1085 270 M 1075 265 L 1070 275");
     const gripper2Waste = document.getElementById('gripper-2-waste');
-    gripper2Waste.innerHTML = gripper2State.hasWaste ? gripper2State.wasteIcons.map((icon, i) => `<text x="600" y="${210 + i * 20}" text-anchor="middle" font-size="24">${icon}</text>`).join('') : '';
+    gripper2Waste.innerHTML = gripper2State.hasWaste ? gripper2State.wasteIcons.map((icon, i) => `<text x="1050" y="${210 + i * 20}" text-anchor="middle" font-size="24">${icon}</text>`).join('') : '';
 
     const compressor = document.getElementById('compressor');
     compressor.setAttribute('transform', `translate(${180 + compressorState.position * 180}, 0)`);
@@ -459,6 +516,7 @@ const updateAnimationState = () => {
 // Initialize
 document.addEventListener('DOMContentLoaded', () => {
     setupSpeechRecognition();
+    updateTime();
     updateWasteButtons();
     updateWasteQueue();
     updateWasteStorage();
@@ -466,9 +524,16 @@ document.addEventListener('DOMContentLoaded', () => {
     updateAnimationState();
     updateLid();
     updateVoiceButton();
+    updateSystemStatus();
 
     document.getElementById('toggle-lid-btn').addEventListener('click', toggleLid);
     document.getElementById('toggle-voice-btn').addEventListener('click', toggleVoiceRecognition);
     document.getElementById('clear-all-btn').addEventListener('click', clearAllWaste);
+    document.getElementById('toggle-compressor-btn').addEventListener('click', toggleCompressor);
     document.getElementById('clear-all-btn').disabled = isProcessing;
+
+    // Additional initialization checks
+    if (!navigator.mediaDevices || !navigator.mediaDevices.getUserMedia) {
+        showToast("Peringatan", "Browser tidak mendukung mikrofon", "destructive");
+    }
 });
