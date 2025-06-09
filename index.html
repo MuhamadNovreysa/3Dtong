@@ -3,363 +3,396 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Smart Waste Sorting System</title>
+    <title>Futuristic Waste Sorter</title>
     <style>
         :root {
-            --primary-color: #2ecc71;
-            --secondary-color: #3498db;
-            --danger-color: #e74c3c;
-            --warning-color: #f39c12;
-            --dark-color: #34495e;
-            --light-color: #ecf0f1;
+            --primary: #00ff9d;
+            --secondary: #00b8ff;
+            --danger: #ff3860;
+            --warning: #ffdd57;
+            --dark: #1a1a2e;
+            --accent: #ff2d75;
+            --neon-glow: 0 0 10px rgba(0, 255, 157, 0.8);
         }
 
         * {
             margin: 0;
             padding: 0;
             box-sizing: border-box;
-            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            font-family: 'Orbitron', 'Arial', sans-serif;
         }
 
         body {
-            background: linear-gradient(135deg, #f5f7fa 0%, #c3cfe2 100%);
+            background-color: #0f0f1a;
+            color: white;
             min-height: 100vh;
             display: flex;
             justify-content: center;
             align-items: center;
-            perspective: 1000px;
             overflow: hidden;
+        }
+
+        @font-face {
+            font-family: 'Orbitron';
+            src: url('https://fonts.googleapis.com/css2?family=Orbitron:wght@400;700&display=swap');
         }
 
         .container {
-            position: relative;
             width: 1000px;
             height: 700px;
-            transform-style: preserve-3d;
-            animation: rotateScene 30s infinite linear;
+            position: relative;
+            background: linear-gradient(145deg, #121225 0%, #1a1a3a 100%);
+            border-radius: 20px;
+            box-shadow: 0 0 30px rgba(0, 0, 0, 0.5);
+            padding: 20px;
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 20px;
+            border: 2px solid var(--primary);
         }
 
-        @keyframes rotateScene {
-            0% { transform: rotateY(0deg); }
-            100% { transform: rotateY(360deg); }
+        /* MAIN BIN AREA */
+        .bin-area {
+            position: relative;
+            background: rgba(30, 30, 60, 0.3);
+            border-radius: 15px;
+            border: 1px solid rgba(0, 255, 157, 0.2);
+            display: flex;
+            flex-direction: column;
+            padding: 20px;
         }
 
-        /* 3D Bin Structure */
-        .bin-system {
-            position: absolute;
-            width: 800px;
-            height: 600px;
-            left: 100px;
-            top: 50px;
-            transform-style: preserve-3d;
-        }
-
-        /* Base Platform */
-        .platform {
-            position: absolute;
-            width: 800px;
-            height: 30px;
-            background: #7f8c8d;
-            transform: translateY(285px) rotateX(90deg);
-            transform-origin: center;
-            box-shadow: 0 10px 20px rgba(0,0,0,0.3);
-            border-radius: 5px;
-        }
-
-        /* Top Layer - Input Bin */
-        .top-layer {
-            position: absolute;
-            width: 300px;
-            height: 300px;
-            background: #95a5a6;
-            transform: translateY(-150px) translateX(-150px);
+        .input-bin {
+            height: 200px;
+            background: rgba(0, 0, 0, 0.3);
+            border: 2px dashed var(--secondary);
             border-radius: 10px;
-            box-shadow: 0 5px 15px rgba(0,0,0,0.2);
-            transform-style: preserve-3d;
-        }
-
-        .top-bin {
-            position: absolute;
-            width: 250px;
-            height: 250px;
-            background: #bdc3c7;
-            transform: translateY(25px) translateX(25px);
-            border-radius: 5px;
+            margin-bottom: 20px;
+            position: relative;
             overflow: hidden;
+            display: flex;
+            justify-content: center;
+            align-items: center;
         }
 
-        .bin-lid {
-            position: absolute;
-            width: 250px;
-            height: 20px;
-            background: #95a5a6;
-            transform: rotateX(90deg) translateY(-125px) translateZ(10px);
-            transform-origin: bottom;
-            transition: transform 1s ease-in-out;
-            z-index: 10;
+        .input-bin::before {
+            content: "DROP WASTE HERE";
+            color: var(--secondary);
+            font-size: 1.2rem;
+            text-shadow: 0 0 5px var(--secondary);
+            opacity: 0.7;
         }
 
-        .bin-lid.open {
-            transform: rotateX(180deg) translateY(-125px) translateZ(10px);
+        .input-bin.active {
+            border-color: var(--primary);
+            box-shadow: var(--neon-glow);
         }
 
         .track {
-            position: absolute;
-            width: 450px;
-            height: 50px;
-            background: #34495e;
-            transform: translateY(-25px) translateX(175px);
-            border-radius: 25px;
-            display: flex;
-            justify-content: space-between;
-            align-items: center;
-            padding: 0 20px;
+            height: 60px;
+            background: rgba(0, 0, 0, 0.5);
+            border-radius: 30px;
+            margin-bottom: 20px;
+            position: relative;
+            border: 1px solid var(--accent);
         }
 
-        .track-line {
+        .track::before {
+            content: "";
             position: absolute;
-            width: 410px;
-            height: 5px;
-            background: #f1c40f;
-            left: 20px;
-            top: 22.5px;
+            top: 50%;
+            left: 10px;
+            right: 10px;
+            height: 3px;
+            background: linear-gradient(90deg, 
+                transparent 0%, 
+                var(--primary) 50%, 
+                transparent 100%);
+            transform: translateY(-50%);
         }
 
-        /* Robotic Arm */
-        .robotic-arm {
+        .arm {
             position: absolute;
             width: 80px;
             height: 80px;
-            transform: translateX(200px) translateY(-100px);
-            transform-style: preserve-3d;
-            transition: transform 2s ease-in-out;
-            z-index: 5;
+            top: -10px;
+            left: 50%;
+            transform: translateX(-50%);
+            transition: left 1.5s cubic-bezier(0.17, 0.67, 0.21, 0.99);
+            z-index: 10;
         }
 
         .arm-base {
-            position: absolute;
             width: 50px;
             height: 50px;
-            background: #2c3e50;
+            background: var(--dark);
             border-radius: 50%;
-            transform: translateZ(25px);
-        }
-
-        .arm-segment {
-            position: absolute;
-            width: 10px;
-            height: 80px;
-            background: #34495e;
-            transform: translateZ(5px) translateY(-40px) rotateZ(45deg);
-            transform-origin: bottom;
+            margin: 0 auto;
+            border: 3px solid var(--primary);
+            box-shadow: 0 0 15px var(--primary);
+            position: relative;
         }
 
         .arm-claw {
-            position: absolute;
             width: 30px;
             height: 20px;
-            background: #e74c3c;
-            transform: translateZ(5px) translateY(-90px) translateX(-10px);
+            background: var(--danger);
+            margin: 0 auto;
+            margin-top: -15px;
+            border-radius: 5px;
             display: flex;
             justify-content: space-between;
+            padding: 0 3px;
         }
 
-        .claw-left, .claw-right {
+        .claw {
             width: 10px;
             height: 20px;
-            background: #c0392b;
-            transition: transform 0.5s ease;
+            background: var(--accent);
+            border-radius: 3px;
+            transition: transform 0.3s ease;
         }
 
-        .claw-left.open {
-            transform: rotateY(-30deg);
+        .claw.open {
+            transform: rotate(30deg);
         }
 
-        .claw-right.open {
-            transform: rotateY(30deg);
+        .claw.left.open {
+            transform: rotate(-30deg);
         }
 
-        /* Bottom Layer - Sorting Bins */
-        .bottom-layer {
-            position: absolute;
-            width: 800px;
+        .sorting-bins {
+            display: grid;
+            grid-template-columns: repeat(5, 1fr);
+            gap: 10px;
             height: 300px;
-            transform: translateY(150px) translateX(-400px);
-            display: flex;
-            justify-content: space-around;
-            transform-style: preserve-3d;
         }
 
-        .sorting-bin {
-            width: 140px;
-            height: 250px;
-            background: #bdc3c7;
+        .bin {
+            background: rgba(0, 0, 0, 0.3);
+            border-radius: 10px;
+            border: 1px solid;
             position: relative;
-            border-radius: 5px;
-            transform-style: preserve-3d;
-            box-shadow: 0 5px 15px rgba(0,0,0,0.1);
+            overflow: hidden;
+            display: flex;
+            flex-direction: column;
         }
 
-        .bin-organic { border-top: 10px solid var(--primary-color); }
-        .bin-anorganic { border-top: 10px solid var(--secondary-color); }
-        .bin-b3 { border-top: 10px solid var(--danger-color); }
-        .bin-paper { border-top: 10px solid var(--warning-color); }
-        .bin-residue { border-top: 10px solid var(--dark-color); }
-
-        .bin-compressor {
-            position: absolute;
-            width: 130px;
-            height: 20px;
-            background: #7f8c8d;
-            top: -20px;
-            left: 5px;
-            transform-origin: bottom;
-            transition: transform 1s ease;
-            z-index: 2;
-        }
-
-        .bin-compressor.compressing {
-            transform: translateY(230px);
+        .bin-label {
+            text-align: center;
+            padding: 5px;
+            font-size: 0.8rem;
+            font-weight: bold;
+            text-transform: uppercase;
+            letter-spacing: 1px;
         }
 
         .bin-content {
-            position: absolute;
-            width: 130px;
-            bottom: 10px;
-            left: 5px;
-            background: rgba(0,0,0,0.1);
-            transition: height 1s ease;
-            border-radius: 3px 3px 0 0;
+            flex-grow: 1;
+            background: rgba(255, 255, 255, 0.05);
+            position: relative;
         }
 
-        /* Waste Items */
-        .waste-item {
+        .bin-fill {
             position: absolute;
-            transform-style: preserve-3d;
-            transition: transform 2s ease-in-out, opacity 1s ease;
-            cursor: pointer;
-            z-index: 20;
+            bottom: 0;
+            left: 0;
+            right: 0;
+            height: 0%;
+            transition: height 0.5s ease;
         }
 
-        .waste-organic { background: var(--primary-color); }
-        .waste-anorganic { background: var(--secondary-color); }
-        .waste-b3 { background: var(--danger-color); }
-        .waste-paper { background: var(--warning-color); }
-        .waste-residue { background: var(--dark-color); }
+        .bin-organic {
+            border-color: var(--primary);
+        }
+        .bin-organic .bin-fill {
+            background: linear-gradient(to top, var(--primary), #00cc7a);
+        }
 
-        /* Control Panel */
+        .bin-anorganic {
+            border-color: var(--secondary);
+        }
+        .bin-anorganic .bin-fill {
+            background: linear-gradient(to top, var(--secondary), #0095cc);
+        }
+
+        .bin-b3 {
+            border-color: var(--danger);
+        }
+        .bin-b3 .bin-fill {
+            background: linear-gradient(to top, var(--danger), #cc002b);
+        }
+
+        .bin-paper {
+            border-color: var(--warning);
+        }
+        .bin-paper .bin-fill {
+            background: linear-gradient(to top, var(--warning), #ccb123);
+        }
+
+        .bin-residue {
+            border-color: #8a2be2;
+        }
+        .bin-residue .bin-fill {
+            background: linear-gradient(to top, #8a2be2, #5a1a9a);
+        }
+
+        /* CONTROL PANEL */
         .control-panel {
-            position: absolute;
-            width: 300px;
-            height: 200px;
-            background: rgba(255,255,255,0.9);
-            right: 50px;
-            top: 50px;
-            border-radius: 10px;
-            box-shadow: 0 5px 15px rgba(0,0,0,0.1);
+            background: rgba(30, 30, 60, 0.3);
+            border-radius: 15px;
+            border: 1px solid rgba(0, 184, 255, 0.2);
             padding: 20px;
-            transform-style: preserve-3d;
-            transform: translateZ(50px);
-            z-index: 100;
-        }
-
-        .control-title {
-            text-align: center;
-            margin-bottom: 15px;
-            color: #2c3e50;
-        }
-
-        .voice-control {
             display: flex;
             flex-direction: column;
-            align-items: center;
-            margin-bottom: 15px;
         }
 
-        .voice-btn {
-            padding: 10px 20px;
-            background: var(--secondary-color);
-            color: white;
-            border: none;
-            border-radius: 5px;
-            cursor: pointer;
-            margin-bottom: 10px;
-            transition: background 0.3s;
-        }
-
-        .voice-btn:hover {
-            background: #2980b9;
-        }
-
-        .voice-status {
-            font-size: 12px;
-            color: #7f8c8d;
-        }
-
-        .manual-control {
-            display: flex;
-            justify-content: space-around;
-        }
-
-        .control-btn {
-            padding: 8px 15px;
-            background: var(--primary-color);
-            color: white;
-            border: none;
-            border-radius: 5px;
-            cursor: pointer;
-            transition: background 0.3s;
-        }
-
-        .control-btn:hover {
-            background: #27ae60;
-        }
-
-        /* Status Display */
-        .status-display {
-            position: absolute;
-            width: 300px;
-            height: 100px;
-            background: rgba(255,255,255,0.9);
-            right: 50px;
-            top: 270px;
-            border-radius: 10px;
-            box-shadow: 0 5px 15px rgba(0,0,0,0.1);
-            padding: 15px;
-            transform-style: preserve-3d;
-            transform: translateZ(50px);
-            z-index: 100;
-        }
-
-        .status-title {
+        .panel-title {
+            font-size: 1.5rem;
+            margin-bottom: 20px;
+            color: var(--primary);
+            text-shadow: 0 0 10px var(--primary);
             text-align: center;
-            margin-bottom: 10px;
-            color: #2c3e50;
+            letter-spacing: 2px;
         }
 
-        .status-content {
+        .control-section {
+            margin-bottom: 20px;
+        }
+
+        .section-title {
+            font-size: 0.9rem;
+            color: var(--secondary);
+            margin-bottom: 10px;
             display: flex;
-            flex-wrap: wrap;
-            justify-content: space-between;
+            align-items: center;
+        }
+
+        .section-title::before {
+            content: ">";
+            margin-right: 8px;
+            color: var(--accent);
+        }
+
+        .btn {
+            background: var(--dark);
+            color: white;
+            border: none;
+            padding: 10px 15px;
+            border-radius: 5px;
+            cursor: pointer;
+            font-family: 'Orbitron';
+            font-weight: bold;
+            letter-spacing: 1px;
+            margin-right: 10px;
+            margin-bottom: 10px;
+            transition: all 0.3s ease;
+            border: 1px solid transparent;
+        }
+
+        .btn:hover {
+            transform: translateY(-2px);
+        }
+
+        .btn-primary {
+            background: var(--primary);
+            color: var(--dark);
+            box-shadow: 0 0 10px var(--primary);
+        }
+
+        .btn-secondary {
+            background: var(--secondary);
+            color: white;
+            box-shadow: 0 0 10px var(--secondary);
+        }
+
+        .btn-danger {
+            background: var(--danger);
+            color: white;
+            box-shadow: 0 0 10px var(--danger);
+        }
+
+        .btn-accent {
+            background: var(--accent);
+            color: white;
+            box-shadow: 0 0 10px var(--accent);
+        }
+
+        .status-display {
+            background: rgba(0, 0, 0, 0.5);
+            border-radius: 10px;
+            padding: 15px;
+            margin-top: auto;
+            border: 1px solid rgba(0, 255, 157, 0.1);
         }
 
         .status-item {
-            width: 48%;
-            margin-bottom: 5px;
-            font-size: 12px;
             display: flex;
             justify-content: space-between;
+            margin-bottom: 8px;
+            font-size: 0.8rem;
         }
 
         .status-label {
-            color: #7f8c8d;
+            color: var(--secondary);
         }
 
         .status-value {
             font-weight: bold;
+            color: white;
         }
 
-        /* Animations */
+        /* WASTE ITEMS */
+        .waste-item {
+            position: absolute;
+            width: 30px;
+            height: 30px;
+            border-radius: 50%;
+            cursor: pointer;
+            transition: all 0.5s ease;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            font-weight: bold;
+            font-size: 0.7rem;
+        }
+
+        .waste-organic {
+            background: var(--primary);
+            color: var(--dark);
+        }
+
+        .waste-anorganic {
+            background: var(--secondary);
+            color: white;
+        }
+
+        .waste-b3 {
+            background: var(--danger);
+            color: white;
+        }
+
+        .waste-paper {
+            background: var(--warning);
+            color: var(--dark);
+        }
+
+        .waste-residue {
+            background: #8a2be2;
+            color: white;
+        }
+
+        /* ANIMATIONS */
+        @keyframes pulse {
+            0% { opacity: 0.7; }
+            50% { opacity: 1; }
+            100% { opacity: 0.7; }
+        }
+
+        .pulse {
+            animation: pulse 2s infinite;
+        }
+
         @keyframes float {
             0% { transform: translateY(0px); }
             50% { transform: translateY(-10px); }
@@ -370,7 +403,7 @@
             animation: float 3s ease-in-out infinite;
         }
 
-        /* Responsive */
+        /* RESPONSIVE */
         @media (max-width: 1100px) {
             .container {
                 transform: scale(0.8);
@@ -386,102 +419,90 @@
 </head>
 <body>
     <div class="container">
-        <div class="bin-system">
-            <!-- Base Platform -->
-            <div class="platform"></div>
+        <div class="bin-area">
+            <div class="input-bin" id="input-bin"></div>
             
-            <!-- Top Layer - Input Bin -->
-            <div class="top-layer">
-                <div class="top-bin" id="input-bin">
-                    <!-- Waste items will be added here -->
-                </div>
-                <div class="bin-lid" id="bin-lid"></div>
-                <div class="track">
-                    <div class="track-line"></div>
+            <div class="track">
+                <div class="arm" id="arm">
+                    <div class="arm-base"></div>
+                    <div class="arm-claw">
+                        <div class="claw left" id="claw-left"></div>
+                        <div class="claw right" id="claw-right"></div>
+                    </div>
                 </div>
             </div>
             
-            <!-- Robotic Arm -->
-            <div class="robotic-arm" id="robotic-arm">
-                <div class="arm-base"></div>
-                <div class="arm-segment"></div>
-                <div class="arm-claw">
-                    <div class="claw-left" id="claw-left"></div>
-                    <div class="claw-right" id="claw-right"></div>
+            <div class="sorting-bins">
+                <div class="bin bin-organic">
+                    <div class="bin-label">Organic</div>
+                    <div class="bin-content">
+                        <div class="bin-fill" id="fill-organic"></div>
+                    </div>
                 </div>
-            </div>
-            
-            <!-- Bottom Layer - Sorting Bins -->
-            <div class="bottom-layer">
-                <div class="sorting-bin bin-organic">
-                    <div class="bin-compressor" id="compressor-organic"></div>
-                    <div class="bin-content" id="content-organic"></div>
-                    <div class="bin-label">ORGANIC</div>
+                <div class="bin bin-anorganic">
+                    <div class="bin-label">Anorganic</div>
+                    <div class="bin-content">
+                        <div class="bin-fill" id="fill-anorganic"></div>
+                    </div>
                 </div>
-                <div class="sorting-bin bin-anorganic">
-                    <div class="bin-compressor" id="compressor-anorganic"></div>
-                    <div class="bin-content" id="content-anorganic"></div>
-                    <div class="bin-label">ANORGANIC</div>
-                </div>
-                <div class="sorting-bin bin-b3">
-                    <div class="bin-compressor" id="compressor-b3"></div>
-                    <div class="bin-content" id="content-b3"></div>
+                <div class="bin bin-b3">
                     <div class="bin-label">B3</div>
+                    <div class="bin-content">
+                        <div class="bin-fill" id="fill-b3"></div>
+                    </div>
                 </div>
-                <div class="sorting-bin bin-paper">
-                    <div class="bin-compressor" id="compressor-paper"></div>
-                    <div class="bin-content" id="content-paper"></div>
-                    <div class="bin-label">PAPER</div>
+                <div class="bin bin-paper">
+                    <div class="bin-label">Paper</div>
+                    <div class="bin-content">
+                        <div class="bin-fill" id="fill-paper"></div>
+                    </div>
                 </div>
-                <div class="sorting-bin bin-residue">
-                    <div class="bin-compressor" id="compressor-residue"></div>
-                    <div class="bin-content" id="content-residue"></div>
-                    <div class="bin-label">RESIDUE</div>
+                <div class="bin bin-residue">
+                    <div class="bin-label">Residue</div>
+                    <div class="bin-content">
+                        <div class="bin-fill" id="fill-residue"></div>
+                    </div>
                 </div>
             </div>
         </div>
         
-        <!-- Control Panel -->
         <div class="control-panel">
-            <h3 class="control-title">SMART WASTE CONTROL</h3>
-            <div class="voice-control">
-                <button class="voice-btn" id="voice-btn">VOICE CONTROL</button>
-                <div class="voice-status" id="voice-status">Status: Off</div>
+            <h2 class="panel-title">WASTE SORTER 9000</h2>
+            
+            <div class="control-section">
+                <div class="section-title">INPUT CONTROL</div>
+                <button class="btn btn-primary" id="add-waste-btn">ADD WASTE</button>
+                <button class="btn btn-secondary" id="auto-fill-btn">AUTO-FILL</button>
             </div>
-            <div class="manual-control">
-                <button class="control-btn" id="open-btn">OPEN LID</button>
-                <button class="control-btn" id="sort-btn">SORT WASTE</button>
-                <button class="control-btn" id="compress-btn">COMPRESS</button>
+            
+            <div class="control-section">
+                <div class="section-title">SORTING CONTROL</div>
+                <button class="btn btn-accent" id="sort-btn">START SORTING</button>
+                <button class="btn btn-danger" id="stop-btn">EMERGENCY STOP</button>
             </div>
-        </div>
-        
-        <!-- Status Display -->
-        <div class="status-display">
-            <h3 class="status-title">SYSTEM STATUS</h3>
-            <div class="status-content">
+            
+            <div class="control-section">
+                <div class="section-title">SYSTEM CONTROL</div>
+                <button class="btn btn-secondary" id="reset-btn">RESET SYSTEM</button>
+                <button class="btn btn-primary" id="compress-btn">COMPRESS WASTE</button>
+            </div>
+            
+            <div class="status-display">
                 <div class="status-item">
-                    <span class="status-label">Organic:</span>
-                    <span class="status-value" id="status-organic">0%</span>
+                    <span class="status-label">System Status:</span>
+                    <span class="status-value" id="system-status">READY</span>
                 </div>
                 <div class="status-item">
-                    <span class="status-label">Anorganic:</span>
-                    <span class="status-value" id="status-anorganic">0%</span>
+                    <span class="status-label">Items Processed:</span>
+                    <span class="status-value" id="processed-count">0</span>
                 </div>
                 <div class="status-item">
-                    <span class="status-label">B3:</span>
-                    <span class="status-value" id="status-b3">0%</span>
+                    <span class="status-label">Sorting Speed:</span>
+                    <span class="status-value" id="sorting-speed">NORMAL</span>
                 </div>
                 <div class="status-item">
-                    <span class="status-label">Paper:</span>
-                    <span class="status-value" id="status-paper">0%</span>
-                </div>
-                <div class="status-item">
-                    <span class="status-label">Residue:</span>
-                    <span class="status-value" id="status-residue">0%</span>
-                </div>
-                <div class="status-item">
-                    <span class="status-label">System:</span>
-                    <span class="status-value" id="status-system">Ready</span>
+                    <span class="status-label">Efficiency:</span>
+                    <span class="status-value" id="efficiency">100%</span>
                 </div>
             </div>
         </div>
@@ -489,51 +510,34 @@
 
     <script>
         // DOM Elements
-        const voiceBtn = document.getElementById('voice-btn');
-        const voiceStatus = document.getElementById('voice-status');
-        const openBtn = document.getElementById('open-btn');
-        const sortBtn = document.getElementById('sort-btn');
-        const compressBtn = document.getElementById('compress-btn');
-        const binLid = document.getElementById('bin-lid');
-        const roboticArm = document.getElementById('robotic-arm');
+        const inputBin = document.getElementById('input-bin');
+        const arm = document.getElementById('arm');
         const clawLeft = document.getElementById('claw-left');
         const clawRight = document.getElementById('claw-right');
-        const inputBin = document.getElementById('input-bin');
+        const addWasteBtn = document.getElementById('add-waste-btn');
+        const autoFillBtn = document.getElementById('auto-fill-btn');
+        const sortBtn = document.getElementById('sort-btn');
+        const stopBtn = document.getElementById('stop-btn');
+        const resetBtn = document.getElementById('reset-btn');
+        const compressBtn = document.getElementById('compress-btn');
+        const systemStatus = document.getElementById('system-status');
+        const processedCount = document.getElementById('processed-count');
+        const sortingSpeed = document.getElementById('sorting-speed');
+        const efficiency = document.getElementById('efficiency');
         
-        // Bin content elements
-        const binContents = {
-            organic: document.getElementById('content-organic'),
-            anorganic: document.getElementById('content-anorganic'),
-            b3: document.getElementById('content-b3'),
-            paper: document.getElementById('content-paper'),
-            residue: document.getElementById('content-residue')
-        };
-        
-        // Compressor elements
-        const compressors = {
-            organic: document.getElementById('compressor-organic'),
-            anorganic: document.getElementById('compressor-anorganic'),
-            b3: document.getElementById('compressor-b3'),
-            paper: document.getElementById('compressor-paper'),
-            residue: document.getElementById('compressor-residue')
-        };
-        
-        // Status elements
-        const statusElements = {
-            organic: document.getElementById('status-organic'),
-            anorganic: document.getElementById('status-anorganic'),
-            b3: document.getElementById('status-b3'),
-            paper: document.getElementById('status-paper'),
-            residue: document.getElementById('status-residue'),
-            system: document.getElementById('status-system')
+        // Bin fill elements
+        const binFills = {
+            organic: document.getElementById('fill-organic'),
+            anorganic: document.getElementById('fill-anorganic'),
+            b3: document.getElementById('fill-b3'),
+            paper: document.getElementById('fill-paper'),
+            residue: document.getElementById('fill-residue')
         };
         
         // System state
         const state = {
-            voiceActive: false,
-            lidOpen: false,
-            sorting: false,
-            compressing: false,
+            isSorting: false,
+            isStopped: false,
             wasteItems: [],
             binLevels: {
                 organic: 0,
@@ -541,7 +545,9 @@
                 b3: 0,
                 paper: 0,
                 residue: 0
-            }
+            },
+            processed: 0,
+            speed: 1
         };
         
         // Waste types
@@ -553,375 +559,283 @@
             RESIDUE: 'residue'
         };
         
-        // Colors for waste types
-        const WASTE_COLORS = {
-            [WASTE_TYPES.ORGANIC]: '#2ecc71',
-            [WASTE_TYPES.ANORGANIC]: '#3498db',
-            [WASTE_TYPES.B3]: '#e74c3c',
-            [WASTE_TYPES.PAPER]: '#f39c12',
-            [WASTE_TYPES.RESIDUE]: '#34495e'
-        };
-        
         // Initialize the system
         function init() {
             // Add event listeners
-            voiceBtn.addEventListener('click', toggleVoiceControl);
-            openBtn.addEventListener('click', toggleLid);
+            addWasteBtn.addEventListener('click', addRandomWaste);
+            autoFillBtn.addEventListener('click', autoFillWaste);
             sortBtn.addEventListener('click', startSorting);
-            compressBtn.addEventListener('click', startCompressing);
+            stopBtn.addEventListener('click', emergencyStop);
+            resetBtn.addEventListener('click', resetSystem);
+            compressBtn.addEventListener('click', compressWaste);
             
-            // Generate some initial waste items
-            generateWasteItems(5);
+            // Make input bin interactive
+            inputBin.addEventListener('click', (e) => {
+                if (e.target === inputBin) {
+                    addRandomWasteAtPosition(e.offsetX, e.offsetY);
+                }
+            });
             
-            // Update status display
+            // Add some initial waste
+            autoFillWaste();
             updateStatus();
         }
         
-        // Toggle voice control
-        function toggleVoiceControl() {
-            state.voiceActive = !state.voiceActive;
+        // Add random waste item
+        function addRandomWaste() {
+            if (state.isSorting) return;
             
-            if (state.voiceActive) {
-                voiceStatus.textContent = 'Status: Listening...';
-                voiceBtn.textContent = 'STOP LISTENING';
-                simulateVoiceCommand();
-            } else {
-                voiceStatus.textContent = 'Status: Off';
-                voiceBtn.textContent = 'VOICE CONTROL';
-            }
+            const types = Object.values(WASTE_TYPES);
+            const type = types[Math.floor(Math.random() * types.length)];
+            createWasteItem(type);
+            updateStatus();
         }
         
-        // Simulate voice command (for demo)
-        function simulateVoiceCommand() {
-            if (!state.voiceActive) return;
+        // Add waste at specific position
+        function addRandomWasteAtPosition(x, y) {
+            if (state.isSorting) return;
             
-            const commands = [
-                'open lid',
-                'close lid',
-                'sort waste',
-                'compress waste',
-                'add more waste'
-            ];
-            
-            const randomCommand = commands[Math.floor(Math.random() * commands.length)];
-            
-            // Show voice command in status
-            statusElements.system.textContent = `Heard: "${randomCommand}"`;
-            
-            // Execute command after delay
-            setTimeout(() => {
-                switch (randomCommand) {
-                    case 'open lid':
-                        if (!state.lidOpen) toggleLid();
-                        break;
-                    case 'close lid':
-                        if (state.lidOpen) toggleLid();
-                        break;
-                    case 'sort waste':
-                        if (!state.sorting) startSorting();
-                        break;
-                    case 'compress waste':
-                        if (!state.compressing) startCompressing();
-                        break;
-                    case 'add more waste':
-                        generateWasteItems(3);
-                        break;
-                }
-                
-                // Continue listening
-                if (state.voiceActive) {
-                    setTimeout(simulateVoiceCommand, 3000);
-                }
-            }, 1000);
+            const types = Object.values(WASTE_TYPES);
+            const type = types[Math.floor(Math.random() * types.length)];
+            createWasteItem(type, x, y);
+            updateStatus();
         }
         
-        // Toggle bin lid
-        function toggleLid() {
-            state.lidOpen = !state.lidOpen;
+        // Auto-fill with random waste
+        function autoFillWaste() {
+            if (state.isSorting) return;
             
-            if (state.lidOpen) {
-                binLid.classList.add('open');
-                statusElements.system.textContent = 'Lid Opening';
-                
-                // Generate new waste when lid opens
-                setTimeout(() => {
-                    generateWasteItems(2);
-                }, 500);
-            } else {
-                binLid.classList.remove('open');
-                statusElements.system.textContent = 'Lid Closing';
-            }
+            systemStatus.textContent = "ADDING WASTE...";
             
-            // Update button text
-            openBtn.textContent = state.lidOpen ? 'CLOSE LID' : 'OPEN LID';
-        }
-        
-        // Generate random waste items
-        function generateWasteItems(count) {
-            if (!state.lidOpen) return;
+            // Clear existing waste
+            state.wasteItems = [];
+            inputBin.querySelectorAll('.waste-item').forEach(el => el.remove());
             
-            statusElements.system.textContent = 'Adding Waste...';
-            
+            // Add 5-10 random waste items
+            const count = 5 + Math.floor(Math.random() * 6);
             for (let i = 0; i < count; i++) {
                 setTimeout(() => {
-                    const wasteType = getRandomWasteType();
-                    const wasteItem = createWasteItem(wasteType);
-                    inputBin.appendChild(wasteItem);
-                    state.wasteItems.push({
-                        element: wasteItem,
-                        type: wasteType,
-                        id: Date.now() + Math.random()
-                    });
-                    
-                    // Animate the item falling into the bin
-                    animateWasteItem(wasteItem);
-                    
-                    // Update status
-                    updateStatus();
-                }, i * 300);
+                    addRandomWaste();
+                    if (i === count - 1) {
+                        systemStatus.textContent = "READY";
+                    }
+                }, i * 200);
             }
-            
-            setTimeout(() => {
-                statusElements.system.textContent = 'Ready';
-            }, count * 300 + 500);
         }
         
-        // Create a waste item element
-        function createWasteItem(type) {
+        // Create a waste item
+        function createWasteItem(type, x, y) {
             const item = document.createElement('div');
-            item.className = `waste-item waste-${type}`;
+            item.className = `waste-item waste-${type} floating`;
+            item.dataset.type = type;
             
             // Random size and shape
-            const size = 20 + Math.random() * 30;
+            const size = 20 + Math.random() * 20;
             const isRound = Math.random() > 0.5;
             
             item.style.width = `${size}px`;
             item.style.height = `${size}px`;
             item.style.borderRadius = isRound ? '50%' : '5px';
-            item.style.backgroundColor = WASTE_COLORS[type];
             
-            // Random position in the bin
-            item.style.left = `${20 + Math.random() * 210}px`;
-            item.style.top = `${20 + Math.random() * 210}px`;
+            // Set position
+            const posX = x || 20 + Math.random() * (inputBin.offsetWidth - 40);
+            const posY = y || 20 + Math.random() * (inputBin.offsetHeight - 40);
             
-            return item;
-        }
-        
-        // Animate waste item falling into bin
-        function animateWasteItem(item) {
-            item.style.transform = 'translateZ(0) scale(0)';
-            item.style.opacity = '0';
+            item.style.left = `${posX}px`;
+            item.style.top = `${posY}px`;
             
-            setTimeout(() => {
-                item.style.transition = 'transform 0.5s ease, opacity 0.5s ease';
-                item.style.transform = 'translateZ(0) scale(1)';
-                item.style.opacity = '1';
-            }, 100);
-        }
-        
-        // Get random waste type
-        function getRandomWasteType() {
-            const types = Object.values(WASTE_TYPES);
-            return types[Math.floor(Math.random() * types.length)];
+            // Add emoji based on type
+            const emojis = {
+                [WASTE_TYPES.ORGANIC]: '🍎',
+                [WASTE_TYPES.ANORGANIC]: '🥤',
+                [WASTE_TYPES.B3]: '☢️',
+                [WASTE_TYPES.PAPER]: '📄',
+                [WASTE_TYPES.RESIDUE]: '🗑️'
+            };
+            
+            item.textContent = emojis[type];
+            
+            inputBin.appendChild(item);
+            state.wasteItems.push({
+                element: item,
+                type: type,
+                id: Date.now() + Math.random()
+            });
         }
         
         // Start sorting process
         function startSorting() {
-            if (state.sorting || state.wasteItems.length === 0) return;
+            if (state.isSorting || state.wasteItems.length === 0) return;
             
-            state.sorting = true;
-            statusElements.system.textContent = 'Sorting...';
+            state.isSorting = true;
+            state.isStopped = false;
+            systemStatus.textContent = "SORTING...";
             sortBtn.disabled = true;
             
-            // Process each waste item one by one
             processWasteItems();
         }
         
         // Process waste items
         function processWasteItems() {
-            if (state.wasteItems.length === 0) {
-                // Sorting complete
-                state.sorting = false;
-                statusElements.system.textContent = 'Sorting Complete';
+            if (state.isStopped || state.wasteItems.length === 0) {
+                // Sorting complete or stopped
+                state.isSorting = false;
+                systemStatus.textContent = state.isStopped ? "STOPPED" : "SORTING COMPLETE";
                 sortBtn.disabled = false;
                 return;
             }
             
             const wasteItem = state.wasteItems.shift();
-            sortWasteItem(wasteItem, () => {
-                // Process next item after delay
-                setTimeout(processWasteItems, 500);
+            sortItem(wasteItem, () => {
+                // Process next item
+                setTimeout(processWasteItems, 1000 / state.speed);
             });
         }
         
-        // Sort a single waste item
-        function sortWasteItem(wasteItem, callback) {
+        // Sort a single item
+        function sortItem(item, callback) {
             // Move arm to item position
-            const itemRect = wasteItem.element.getBoundingClientRect();
+            const itemRect = item.element.getBoundingClientRect();
             const binRect = inputBin.getBoundingClientRect();
             const armX = itemRect.left - binRect.left + itemRect.width / 2;
-            const armY = itemRect.top - binRect.top + itemRect.height / 2;
             
-            roboticArm.style.transform = `translateX(${armX}px) translateY(${armY - 100}px)`;
+            arm.style.left = `${armX}px`;
             
             // Open claw
             setTimeout(() => {
                 clawLeft.classList.add('open');
                 clawRight.classList.add('open');
                 
-                // Grab item (hide original)
+                // Grab item
                 setTimeout(() => {
-                    wasteItem.element.style.opacity = '0';
+                    item.element.style.opacity = '0';
                     
-                    // Create a clone to move with the arm
-                    const movingItem = wasteItem.element.cloneNode(true);
-                    movingItem.style.position = 'absolute';
-                    movingItem.style.left = '0';
-                    movingItem.style.top = '0';
-                    movingItem.style.margin = '0';
-                    movingItem.style.transform = 'translateY(50px)';
-                    movingItem.style.transition = 'transform 0.5s ease';
-                    roboticArm.appendChild(movingItem);
-                    
-                    // Close claw
+                    // Move arm to target bin
                     setTimeout(() => {
-                        clawLeft.classList.remove('open');
-                        clawRight.classList.remove('open');
+                        const targetX = getTargetBinPosition(item.type);
+                        arm.style.left = `${targetX}px`;
                         
-                        // Move arm to target bin
+                        // Release item
                         setTimeout(() => {
-                            const targetBin = getTargetBinPosition(wasteItem.type);
-                            roboticArm.style.transform = `translateX(${targetBin.x}px) translateY(${targetBin.y}px)`;
+                            clawLeft.classList.remove('open');
+                            clawRight.classList.remove('open');
                             
-                            // Release item into bin
+                            // Add to bin and update status
+                            addToBin(item.type);
+                            state.processed++;
+                            updateStatus();
+                            
+                            // Return arm to center
                             setTimeout(() => {
-                                clawLeft.classList.add('open');
-                                clawRight.classList.add('open');
-                                
-                                // Remove moving item and update bin content
-                                setTimeout(() => {
-                                    roboticArm.removeChild(movingItem);
-                                    addToBinContent(wasteItem.type);
-                                    updateStatus();
-                                    
-                                    // Close claw
-                                    clawLeft.classList.remove('open');
-                                    clawRight.classList.remove('open');
-                                    
-                                    // Return arm to home position
-                                    setTimeout(() => {
-                                        roboticArm.style.transform = 'translateX(200px) translateY(-100px)';
-                                        callback();
-                                    }, 500);
-                                }, 500);
+                                arm.style.left = '50%';
+                                callback();
                             }, 500);
-                        }, 1000);
-                    }, 500);
+                        }, 500);
+                    }, 1000);
                 }, 500);
-            }, 1000);
+            }, 500);
         }
         
-        // Get target bin position for waste type
+        // Get target bin position
         function getTargetBinPosition(type) {
-            const binPositions = {
-                [WASTE_TYPES.ORGANIC]: { x: 50, y: 400 },
-                [WASTE_TYPES.ANORGANIC]: { x: 200, y: 400 },
-                [WASTE_TYPES.B3]: { x: 350, y: 400 },
-                [WASTE_TYPES.PAPER]: { x: 500, y: 400 },
-                [WASTE_TYPES.RESIDUE]: { x: 650, y: 400 }
-            };
+            const bins = document.querySelectorAll('.bin');
+            let targetIndex;
             
-            return binPositions[type];
-        }
-        
-        // Add waste to bin content
-        function addToBinContent(type) {
-            state.binLevels[type] += 10; // Increase by 10%
-            
-            if (state.binLevels[type] > 100) {
-                state.binLevels[type] = 100;
+            switch(type) {
+                case WASTE_TYPES.ORGANIC: targetIndex = 0; break;
+                case WASTE_TYPES.ANORGANIC: targetIndex = 1; break;
+                case WASTE_TYPES.B3: targetIndex = 2; break;
+                case WASTE_TYPES.PAPER: targetIndex = 3; break;
+                case WASTE_TYPES.RESIDUE: targetIndex = 4; break;
             }
             
-            // Update bin content display
-            binContents[type].style.height = `${state.binLevels[type]}%`;
+            const binRect = bins[targetIndex].getBoundingClientRect();
+            const trackRect = document.querySelector('.track').getBoundingClientRect();
+            
+            return binRect.left - trackRect.left + binRect.width / 2;
         }
         
-        // Start compressing process
-        function startCompressing() {
-            if (state.compressing) return;
+        // Add waste to bin
+        function addToBin(type) {
+            state.binLevels[type] += 10;
+            if (state.binLevels[type] > 100) state.binLevels[type] = 100;
             
-            state.compressing = true;
-            statusElements.system.textContent = 'Compressing...';
-            compressBtn.disabled = true;
-            
-            // Compress each bin one by one
-            compressBins();
+            binFills[type].style.height = `${state.binLevels[type]}%`;
         }
         
-        // Compress bins
-        function compressBins() {
-            const binTypes = Object.keys(state.binLevels);
-            let currentIndex = 0;
+        // Emergency stop
+        function emergencyStop() {
+            state.isStopped = true;
+            systemStatus.textContent = "EMERGENCY STOP";
+            sortBtn.disabled = false;
+        }
+        
+        // Reset system
+        function resetSystem() {
+            state.isSorting = false;
+            state.isStopped = false;
+            state.processed = 0;
             
-            function compressNextBin() {
-                if (currentIndex >= binTypes.length) {
-                    // Compression complete
-                    state.compressing = false;
-                    statusElements.system.textContent = 'Compression Complete';
-                    compressBtn.disabled = false;
-                    return;
-                }
-                
-                const binType = binTypes[currentIndex];
-                
-                if (state.binLevels[binType] > 0) {
-                    // Only compress if there's content
-                    compressBin(binType, () => {
-                        currentIndex++;
-                        setTimeout(compressNextBin, 500);
-                    });
-                } else {
-                    currentIndex++;
-                    setTimeout(compressNextBin, 100);
+            // Reset bins
+            for (const type in state.binLevels) {
+                state.binLevels[type] = 0;
+                binFills[type].style.height = '0%';
+            }
+            
+            // Reset arm position
+            arm.style.left = '50%';
+            clawLeft.classList.remove('open');
+            clawRight.classList.remove('open');
+            
+            // Clear waste items
+            state.wasteItems = [];
+            inputBin.querySelectorAll('.waste-item').forEach(el => el.remove());
+            
+            systemStatus.textContent = "SYSTEM RESET";
+            sortBtn.disabled = false;
+            updateStatus();
+        }
+        
+        // Compress waste
+        function compressWaste() {
+            if (state.isSorting) return;
+            
+            systemStatus.textContent = "COMPRESSING...";
+            
+            for (const type in state.binLevels) {
+                if (state.binLevels[type] > 0) {
+                    // Reduce by 30-50%
+                    const reduction = 30 + Math.random() * 20;
+                    state.binLevels[type] = Math.max(0, state.binLevels[type] - reduction);
+                    
+                    // Animate compression
+                    setTimeout(() => {
+                        binFills[type].style.height = `${state.binLevels[type]}%`;
+                    }, type.charCodeAt(0) * 50); // Stagger animations
                 }
             }
             
-            compressNextBin();
-        }
-        
-        // Compress a single bin
-        function compressBin(binType, callback) {
-            const compressor = compressors[binType];
-            const content = binContents[binType];
-            
-            // Animate compressor down
-            compressor.classList.add('compressing');
-            
-            // Reduce content height (simulate compression)
             setTimeout(() => {
-                const currentLevel = state.binLevels[binType];
-                const newLevel = Math.max(0, currentLevel - 30); // Compress by 30%
-                
-                state.binLevels[binType] = newLevel;
-                content.style.height = `${newLevel}%`;
-                
-                // Animate compressor up
-                setTimeout(() => {
-                    compressor.classList.remove('compressing');
-                    updateStatus();
-                    callback();
-                }, 1000);
+                systemStatus.textContent = "COMPRESSION COMPLETE";
+                updateStatus();
             }, 1000);
         }
         
         // Update status display
         function updateStatus() {
-            for (const type in state.binLevels) {
-                statusElements[type].textContent = `${state.binLevels[type]}%`;
-            }
+            processedCount.textContent = state.processed;
+            
+            // Calculate efficiency (random for demo)
+            const eff = 95 + Math.floor(Math.random() * 6);
+            efficiency.textContent = `${eff}%`;
+            
+            // Update speed display
+            sortingSpeed.textContent = 
+                state.speed === 1 ? 'NORMAL' : 
+                state.speed === 2 ? 'FAST' : 'TURBO';
         }
         
-        // Initialize the system when DOM is loaded
+        // Initialize the system
         document.addEventListener('DOMContentLoaded', init);
     </script>
 </body>
