@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Tong Sampah Cerdas 2.0</title>
+    <title>Tong Sampah Cerdas 2.0 - Ultimate Edition</title>
     <link rel="stylesheet" href="styles.css">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
 </head>
@@ -11,12 +11,16 @@
     <div class="container">
         <div class="header text-center mb-4 md:mb-6">
             <h1 class="text-4xl md:text-6xl font-extrabold text-neon-green mb-2">Tong Sampah Cerdas 2.0</h1>
-            <p class="text-lg md:text-2xl text-cyber-blue">Sistem Pemilahan Sampah Futuristik</p>
+            <p class="text-lg md:text-2xl text-cyber-blue">Sistem Pemilahan Sampah Futuristik - Ultimate Edition</p>
             <div class="flex items-center justify-center gap-3 mt-2">
                 <i class="fas fa-mobile-alt w-5 h-5 text-neon-blue"></i>
                 <span class="text-sm text-neon-blue">Mobile Ready</span>
                 <i class="fas fa-laptop w-5 h-5 ml-3 text-neon-blue"></i>
                 <span class="text-sm text-neon-blue">Desktop Optimized</span>
+            </div>
+            <div id="status-bar" class="mt-3 text-sm text-gray-400">
+                <span>Status: <span id="system-status">Idle</span></span>
+                <span class="ml-4">Waktu: <span id="current-time">01:51 AM WIB</span></span>
             </div>
         </div>
 
@@ -57,46 +61,47 @@
                                     <text x="955" y="78" text-anchor="middle" fill="white" font-size="18" font-weight="bold">🎤</text>
                                 </g>
 
-                                <!-- Sorting Area with Track -->
+                                <!-- Sorting Area with Side Tracks -->
                                 <g>
                                     <rect x="150" y="180" width="900" height="250" fill="#1e293b" stroke="#00ffcc" stroke-width="4" />
                                     <rect x="140" y="170" width="900" height="250" fill="#0f172a" stroke="#00cc99" stroke-width="5" />
                                     <text x="600" y="200" text-anchor="middle" font-size="24" fill="#00ffcc">AREA PEMILAHAN DENGAN TRACK</text>
                                     <g id="sorting-area">
-                                        <rect x="150" y="180" width="900" height="50" fill="#374151" opacity="0.5" />
-                                        <path d="M 150 230 Q 600 180 1050 230" stroke="#00ffcc" stroke-width="5" fill="none" />
+                                        <rect x="150" y="180" width="450" height="250" fill="#374151" opacity="0.5" /> <!-- Half partition left -->
+                                        <rect x="600" y="180" width="450" height="250" fill="#374151" opacity="0.5" /> <!-- Half partition right -->
+                                        <path d="M 150 230 L 150 430" stroke="#00ffcc" stroke-width="5" fill="none" /> <!-- Left track -->
+                                        <path d="M 1050 230 L 1050 430" stroke="#00ffcc" stroke-width="5" fill="none" /> <!-- Right track -->
                                     </g>
                                 </g>
 
-                                <!-- Half Partition and Compartments -->
+                                <!-- Compartments -->
                                 <g>
                                     <rect x="150" y="430" width="900" height="270" fill="#1e293b" stroke="#00ffcc" stroke-width="4" />
                                     <rect x="140" y="420" width="900" height="270" fill="#0f172a" stroke="#00cc99" stroke-width="5" />
-                                    <rect x="150" y="430" width="900" height="135" fill="#374151" opacity="0.5" /> <!-- Half partition -->
                                     <text x="600" y="450" text-anchor="middle" font-size="24" fill="#00ffcc">KOMPARTEMEN SAMPAH</text>
                                     <g id="waste-compartments"></g>
                                 </g>
 
-                                <!-- Dual Grippers with Track -->
+                                <!-- Dual Grippers with Side Tracks -->
                                 <g id="gripper-1" transform="translate(0, 0)" class="transition-transform duration-1000">
-                                    <rect x="550" y="200" width="100" height="30" fill="#ff007a" rx="15" />
-                                    <rect x="560" y="170" width="80" height="50" fill="#1e293b" rx="10" />
-                                    <circle cx="600" cy="160" r="20" fill="#ff00cc" />
-                                    <path id="gripper-1-arm-left" d="M 580 230 L 570 260 L 575 265 L 585 235 Z" fill="#ff007a" />
-                                    <path id="gripper-1-arm-right" d="M 620 230 L 630 260 L 625 265 L 615 235 Z" fill="#ff007a" />
+                                    <rect x="100" y="200" width="100" height="30" fill="#ff007a" rx="15" />
+                                    <rect x="110" y="170" width="80" height="50" fill="#1e293b" rx="10" />
+                                    <circle cx="150" cy="160" r="20" fill="#ff00cc" />
+                                    <path id="gripper-1-arm-left" d="M 130 230 L 120 260 L 125 265 L 135 235 Z" fill="#ff007a" />
+                                    <path id="gripper-1-arm-right" d="M 170 230 L 180 260 L 175 265 L 165 235 Z" fill="#ff007a" />
                                     <g id="gripper-1-waste"></g>
-                                    <path id="gripper-1-claw-left" d="M 570 260 L 565 270 M 575 265 L 580 275" stroke="#ff00cc" stroke-width="5" stroke-linecap="round" />
-                                    <path id="gripper-1-claw-right" d="M 630 260 L 635 270 M 625 265 L 620 275" stroke="#ff00cc" stroke-width="5" stroke-linecap="round" />
+                                    <path id="gripper-1-claw-left" d="M 120 260 L 115 270 M 125 265 L 130 275" stroke="#ff00cc" stroke-width="5" stroke-linecap="round" />
+                                    <path id="gripper-1-claw-right" d="M 180 260 L 185 270 M 175 265 L 170 275" stroke="#ff00cc" stroke-width="5" stroke-linecap="round" />
                                 </g>
                                 <g id="gripper-2" transform="translate(0, 0)" class="transition-transform duration-1000">
-                                    <rect x="550" y="200" width="100" height="30" fill="#00ffcc" rx="15" />
-                                    <rect x="560" y="170" width="80" height="50" fill="#1e293b" rx="10" />
-                                    <circle cx="600" cy="160" r="20" fill="#00cc99" />
-                                    <path id="gripper-2-arm-left" d="M 580 230 L 570 260 L 575 265 L 585 235 Z" fill="#00ffcc" />
-                                    <path id="gripper-2-arm-right" d="M 620 230 L 630 260 L 625 265 L 615 235 Z" fill="#00ffcc" />
+                                    <rect x="1000" y="200" width="100" height="30" fill="#00ffcc" rx="15" />
+                                    <rect x="1010" y="170" width="80" height="50" fill="#1e293b" rx="10" />
+                                    <circle cx="1050" cy="160" r="20" fill="#00cc99" />
+                                    <path id="gripper-2-arm-left" d="M 1030 230 L 1020 260 L 1025 265 L 1035 235 Z" fill="#00ffcc" />
+                                    <path id="gripper-2-arm-right" d="M 1070 230 L 1080 260 L 1075 265 L 1065 235 Z" fill="#00ffcc" />
                                     <g id="gripper-2-waste"></g>
-                                    <path id="gripper-2-claw-left" d="M 570 260 L 565 270 M 575 265 L 580 275" stroke="#00cc99" stroke-width="5" stroke-linecap="round" />
-                                    <path id="gripper-2-claw-right" d="M 630 260 L 635 270 M 625 265 L 620 275" stroke="#00cc99" stroke-width="5" stroke-linecap="round" />
+                                    <path id="gripper-2-claw-left" d="M 1020 260 L 1015 270 M 1025 265 L 1030 275" stroke="#00cc99" stroke-width="5" stroke-linecap="round" />
+                                    <path id="gripper-2-claw-right" d="M 1080 260 L 1085 270 M 1075 265 L 1070 275" stroke="#00cc99" stroke-width="5" stroke-linecap="round" />
                                 </g>
 
                                 <!-- Compression System -->
@@ -125,6 +130,10 @@
                                 </button>
                                 <button id="clear-all-btn" class="btn h-16 text-xl font-bold px-8 bg-gray-700 hover:bg-gray-800">
                                     🗑️ Reset Sistem
+                                </button>
+                                <button id="toggle-compressor-btn" class="btn h-16 text-xl font-bold px-8 bg-neon-purple hover:bg-purple-800">
+                                    <i class="fas fa-compress w-6 h-6 mr-2"></i>
+                                    Aktifkan Tekan
                                 </button>
                             </div>
                         </div>
@@ -179,6 +188,14 @@
                         </h2>
                     </div>
                     <div class="card-content p-4 md:p-6 space-y-2 max-h-30vh overflow-y-auto" id="process-status"></div>
+                </div>
+
+                <!-- System Logs -->
+                <div class="card">
+                    <div class="card-header p-4 md:p-6">
+                        <h2 class="card-title text-lg md:text-xl">Log Sistem</h2>
+                    </div>
+                    <div class="card-content p-4 md:p-6 space-y-2 max-h-30vh overflow-y-auto" id="system-logs"></div>
                 </div>
             </div>
         </div>
