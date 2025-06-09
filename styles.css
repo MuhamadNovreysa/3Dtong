@@ -10,6 +10,7 @@
     --midnight-blue: #1e293b;
 }
 
+/* Reset and base styles */
 * {
     box-sizing: border-box;
     margin: 0;
@@ -20,8 +21,10 @@ body {
     font-family: 'Orbitron', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, sans-serif;
     background: linear-gradient(135deg, var(--dark-space), var(--midnight-blue));
     color: #e2e8f0;
+    line-height: 1.6;
 }
 
+/* Container and layout */
 .container {
     width: 100%;
     min-height: 100vh;
@@ -39,7 +42,7 @@ body {
 .mb-4 { margin-bottom: 1rem; }
 .mb-2 { margin-bottom: 0.5rem; }
 .mt-2 { margin-top: 0.5rem; }
-.ml-3 { margin-left: 0.75rem; }
+.ml-4 { margin-left: 1rem; }
 .gap-3 { gap: 0.75rem; }
 .gap-4 { gap: 1rem; }
 .space-y-4 > * + * { margin-top: 1rem; }
@@ -62,7 +65,7 @@ body {
 .text-neon-green { color: var(--neon-green); }
 .text-cyber-blue { color: var(--cyber-blue); }
 .text-neon-purple { color: var(--neon-purple); }
-.text-gray-300 { color: #d1d5db; }
+.text-gray-400 { color: #9ca3af; }
 .opacity-50 { opacity: 0.5; }
 
 /* Grid system */
@@ -73,7 +76,7 @@ body {
     .lg:grid-cols-4 { grid-template-columns: repeat(4, minmax(0, 1fr)); }
     .lg:col-span-3 { grid-column: span 3 / span 3; }
 }
-@media (min-width: 768md) {
+@media (min-width: 768px) {
     .md:gap-6 { gap: 1.5rem; }
     .md:mb-6 { margin-bottom: 1.5rem; }
     .md:text-2xl { font-size: 1.5rem; line-height: 2rem; }
@@ -91,6 +94,11 @@ body {
     box-shadow: 0 4px 15px rgba(0, 255, 204, 0.2);
     overflow: hidden;
     backdrop-filter: blur(5px);
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
+.card:hover {
+    transform: translateY(-5px);
+    box-shadow: 0 6px 20px rgba(0, 255, 204, 0.3);
 }
 .card-header { padding: 1rem; }
 .card-content { padding: 1rem; }
@@ -108,6 +116,7 @@ body {
     cursor: pointer;
     transition: all 0.3s ease;
     border: 2px solid transparent;
+    text-shadow: 0 0 5px rgba(255, 255, 255, 0.3);
 }
 .btn:disabled {
     opacity: 0.5;
@@ -119,6 +128,8 @@ body {
 .bg-cyber-blue:hover { background-color: var(--cyber-dark-blue); }
 .bg-gray-700 { background-color: #374151; border-color: #4b5563; }
 .bg-gray-700:hover { background-color: #4b5563; }
+.bg-neon-purple { background-color: var(--neon-purple); border-color: var(--neon-purple); }
+.bg-neon-purple:hover { background-color: #9900cc; }
 .bg-gray-800 { background-color: #1f2937; }
 .h-16 { height: 4rem; }
 .px-10 { padding-left: 2.5rem; padding-right: 2.5rem; }
