@@ -1,11 +1,10 @@
-
 // Waste types
 const wasteTypes = [
-    { name: "Organik", color: "#00ffcc", icon: "🍌" },
-    { name: "Anorganik", color: "#00ccff", icon: "🥤" },
-    { name: "B3", color: "#ff007a", icon: "🔋" },
-    { name: "Kertas", color: "#ff9900", icon: "📄" },
-    { name: "Residu", color: "#cc00ff", icon: "🗑️" },
+    { name: "Organik", color: "#00ffcc", icon: "🍌", x: 200, y: 600 },
+    { name: "Anorganik", color: "#00ccff", icon: "🥤", x: 380, y: 600 },
+    { name: "B3", color: "#ff007a", icon: "🔋", x: 560, y: 600 },
+    { name: "Kertas", color: "#ff9900", icon: "📄", x: 740, y: 600 },
+    { name: "Residu", color: "#cc00ff", icon: "🗑️", x: 920, y: 600 },
 ];
 
 // Available waste items
@@ -47,20 +46,20 @@ let isRecognitionRunning = false;
 // Animation states for dual grippers
 let gripper1State = {
     x: 600,
-    y: 250,
+    y: 200,
     hasWaste: false,
     targetX: 600,
-    targetY: 250,
+    targetY: 200,
     wasteIcons: [],
     wasteCategory: "",
     isMoving: false,
 };
 let gripper2State = {
     x: 600,
-    y: 250,
+    y: 200,
     hasWaste: false,
     targetX: 600,
-    targetY: 250,
+    targetY: 200,
     wasteIcons: [],
     wasteCategory: "",
     isMoving: false,
@@ -214,11 +213,9 @@ const startRecognition = () => {
 };
 
 // Waste processing logic
-const getCategoryIndex = (category) => wasteTypes.findIndex(w => w.name === category);
-
 const getCategoryPosition = (category) => {
-    const index = getCategoryIndex(category);
-    return { x: 200 + index * 180, y: 600 };
+    const waste = wasteTypes.find(w => w.name === category);
+    return { x: waste.x, y: waste.y };
 };
 
 const addWasteToStorage = (waste) => {
@@ -229,12 +226,14 @@ const addWasteToStorage = (waste) => {
 const animateGripper = async (gripperState, targetX, targetY, waste) => {
     gripperState.isMoving = true;
     const step = 10;
-    while (gripperState.x !== targetX || gripperState.y !== targetY) {
+    while (Math.abs(gripperState.x - targetX) > step || Math.abs(gripperState.y - targetY) > step) {
         gripperState.x += (targetX - gripperState.x) > 0 ? step : -step;
         gripperState.y += (targetY - gripperState.y) > 0 ? step : -step;
         updateAnimationState();
         await new Promise(resolve => setTimeout(resolve, 50));
     }
+    gripperState.x = targetX;
+    gripperState.y = targetY;
     gripperState.isMoving = false;
     if (waste) {
         gripperState.hasWaste = true;
@@ -256,8 +255,7 @@ const processWasteQueue = async () => {
     isProcessing = true;
     updateProcessStatus();
 
-    let i = 0;
-    while (i < wasteQueue.length) {
+    for (let i = 0; i < wasteQueue.length; i++) {
         const waste = wasteQueue[i];
         const categoryPos = getCategoryPosition(waste.category);
         const gripper = !gripper1State.isMoving ? gripper1State : !gripper2State.isMoving ? gripper2State : null;
@@ -270,13 +268,14 @@ const processWasteQueue = async () => {
         sortingProcess.push(`🤖 Gripper ${gripper === gripper1State ? 1 : 2} memproses: ${waste.name}`);
         updateProcessStatus();
 
-        await animateGripper(gripper, 600, 250, waste); // Pick up
+        await animateGripper(gripper, 600, 200, waste); // Pick up
         await animateGripper(gripper, categoryPos.x, categoryPos.y); // Move to compartment
         await animateGripper(gripper, categoryPos.x, categoryPos.y, null); // Drop
-        await animateGripper(gripper, 600, 250); // Return
+        await animateGripper(gripper, 600, 200); // Return
 
         wasteQueue.splice(i, 1);
         updateWasteQueue();
+        i--; // Adjust index after removal
         await new Promise(resolve => setTimeout(resolve, 500));
     }
 
@@ -310,8 +309,8 @@ const toggleLid = async () => {
 const clearAllWaste = () => {
     wasteQueue = [];
     storedWastes = { Organik: [], Anorganik: [], B3: [], Kertas: [], Residu: [] };
-    gripper1State = { x: 600, y: 250, hasWaste: false, targetX: 600, targetY: 250, wasteIcons: [], wasteCategory: "", isMoving: false };
-    gripper2State = { x: 600, y: 250, hasWaste: false, targetX: 600, targetY: 250, wasteIcons: [], wasteCategory: "", isMoving: false };
+    gripper1State = { x: 600, y: 200, hasWaste: false, targetX: 600, targetY: 200, wasteIcons: [], wasteCategory: "", isMoving: false };
+    gripper2State = { x: 600, y: 200, hasWaste: false, targetX: 600, targetY: 200, wasteIcons: [], wasteCategory: "", isMoving: false };
     compressorState = { position: 0, active: false };
     sortingProcess = [];
     updateWasteQueue();
@@ -390,11 +389,11 @@ const updateWasteStorage = () => {
     const compartments = document.getElementById('waste-compartments');
     compartments.innerHTML = wasteTypes.map((waste, index) => `
         <g>
-            <rect x="${150 + index * 180}" y="550" width="160" height="130" fill="${waste.color}" fill-opacity="0.3" stroke="${waste.color}" stroke-width="4" />
-            <rect x="${140 + index * 180}" y="540" width="160" height="130" fill="${waste.color}" fill-opacity="0.2" stroke="${waste.color}" stroke-width="5" />
-            <text x="${230 + index * 180}" y="570" text-anchor="middle" font-size="16" fill="${waste.color}">${waste.name}</text>
+            <rect x="${waste.x - 50}" y="565" width="100" height="135" fill="${waste.color}" fill-opacity="0.3" stroke="${waste.color}" stroke-width="4" />
+            <rect x="${waste.x - 60}" y="555" width="100" height="135" fill="${waste.color}" fill-opacity="0.2" stroke="${waste.color}" stroke-width="5" />
+            <text x="${waste.x - 5}" y="585" text-anchor="middle" font-size="16" fill="${waste.color}">${waste.name}</text>
             ${storedWastes[waste.name].map((storedWaste, i) => `
-                <text x="${200 + index * 180 + (i % 3) * 40}" y="${610 + Math.floor(i / 3) * 30}" text-anchor="middle" font-size="24">${storedWaste.icon}</text>
+                <text x="${waste.x - 50 + (i % 2) * 40}" y="${615 + Math.floor(i / 2) * 30}" text-anchor="middle" font-size="24">${storedWaste.icon}</text>
             `).join('')}
         </g>
     `).join('');
@@ -424,30 +423,30 @@ const updateProcessStatus = () => {
 
 const updateAnimationState = () => {
     const gripper1 = document.getElementById('gripper-1');
-    gripper1.setAttribute('transform', `translate(${gripper1State.x - 600}, ${gripper1State.y - 250})`);
+    gripper1.setAttribute('transform', `translate(${gripper1State.x - 600}, ${gripper1State.y - 200})`);
     const gripper1ArmLeft = document.getElementById('gripper-1-arm-left');
     const gripper1ArmRight = document.getElementById('gripper-1-arm-right');
     const gripper1ClawLeft = document.getElementById('gripper-1-claw-left');
     const gripper1ClawRight = document.getElementById('gripper-1-claw-right');
-    gripper1ArmLeft.setAttribute('d', gripper1State.hasWaste ? "M 585 280 L 580 310 L 585 315 L 590 285 Z" : "M 580 280 L 570 310 L 575 315 L 585 285 Z");
-    gripper1ArmRight.setAttribute('d', gripper1State.hasWaste ? "M 615 280 L 620 310 L 615 315 L 610 285 Z" : "M 620 280 L 630 310 L 625 315 L 615 285 Z");
-    gripper1ClawLeft.setAttribute('d', gripper1State.hasWaste ? "M 580 310 L 575 315 M 585 315 L 580 320" : "M 570 310 L 565 320 M 575 315 L 580 325");
-    gripper1ClawRight.setAttribute('d', gripper1State.hasWaste ? "M 620 310 L 625 315 M 615 315 L 620 320" : "M 630 310 L 635 320 M 625 315 L 620 325");
+    gripper1ArmLeft.setAttribute('d', gripper1State.hasWaste ? "M 585 230 L 580 260 L 585 265 L 590 235 Z" : "M 580 230 L 570 260 L 575 265 L 585 235 Z");
+    gripper1ArmRight.setAttribute('d', gripper1State.hasWaste ? "M 615 230 L 620 260 L 615 265 L 610 235 Z" : "M 620 230 L 630 260 L 625 265 L 615 235 Z");
+    gripper1ClawLeft.setAttribute('d', gripper1State.hasWaste ? "M 580 260 L 575 265 M 585 265 L 580 270" : "M 570 260 L 565 270 M 575 265 L 580 275");
+    gripper1ClawRight.setAttribute('d', gripper1State.hasWaste ? "M 620 260 L 625 265 M 615 265 L 620 270" : "M 630 260 L 635 270 M 625 265 L 620 275");
     const gripper1Waste = document.getElementById('gripper-1-waste');
-    gripper1Waste.innerHTML = gripper1State.hasWaste ? gripper1State.wasteIcons.map((icon, i) => `<text x="600" y="${260 + i * 20}" text-anchor="middle" font-size="24">${icon}</text>`).join('') : '';
+    gripper1Waste.innerHTML = gripper1State.hasWaste ? gripper1State.wasteIcons.map((icon, i) => `<text x="600" y="${210 + i * 20}" text-anchor="middle" font-size="24">${icon}</text>`).join('') : '';
 
     const gripper2 = document.getElementById('gripper-2');
-    gripper2.setAttribute('transform', `translate(${gripper2State.x - 600}, ${gripper2State.y - 250})`);
+    gripper2.setAttribute('transform', `translate(${gripper2State.x - 600}, ${gripper2State.y - 200})`);
     const gripper2ArmLeft = document.getElementById('gripper-2-arm-left');
     const gripper2ArmRight = document.getElementById('gripper-2-arm-right');
     const gripper2ClawLeft = document.getElementById('gripper-2-claw-left');
     const gripper2ClawRight = document.getElementById('gripper-2-claw-right');
-    gripper2ArmLeft.setAttribute('d', gripper2State.hasWaste ? "M 585 280 L 580 310 L 585 315 L 590 285 Z" : "M 580 280 L 570 310 L 575 315 L 585 285 Z");
-    gripper2ArmRight.setAttribute('d', gripper2State.hasWaste ? "M 615 280 L 620 310 L 615 315 L 610 285 Z" : "M 620 280 L 630 310 L 625 315 L 615 285 Z");
-    gripper2ClawLeft.setAttribute('d', gripper2State.hasWaste ? "M 580 310 L 575 315 M 585 315 L 580 320" : "M 570 310 L 565 320 M 575 315 L 580 325");
-    gripper2ClawRight.setAttribute('d', gripper2State.hasWaste ? "M 620 310 L 625 315 M 615 315 L 620 320" : "M 630 310 L 635 320 M 625 315 L 620 325");
+    gripper2ArmLeft.setAttribute('d', gripper2State.hasWaste ? "M 585 230 L 580 260 L 585 265 L 590 235 Z" : "M 580 230 L 570 260 L 575 265 L 585 235 Z");
+    gripper2ArmRight.setAttribute('d', gripper2State.hasWaste ? "M 615 230 L 620 260 L 615 265 L 610 235 Z" : "M 620 230 L 630 260 L 625 265 L 615 235 Z");
+    gripper2ClawLeft.setAttribute('d', gripper2State.hasWaste ? "M 580 260 L 575 265 M 585 265 L 580 270" : "M 570 260 L 565 270 M 575 265 L 580 275");
+    gripper2ClawRight.setAttribute('d', gripper2State.hasWaste ? "M 620 260 L 625 265 M 615 265 L 620 270" : "M 630 260 L 635 270 M 625 265 L 620 275");
     const gripper2Waste = document.getElementById('gripper-2-waste');
-    gripper2Waste.innerHTML = gripper2State.hasWaste ? gripper2State.wasteIcons.map((icon, i) => `<text x="600" y="${260 + i * 20}" text-anchor="middle" font-size="24">${icon}</text>`).join('') : '';
+    gripper2Waste.innerHTML = gripper2State.hasWaste ? gripper2State.wasteIcons.map((icon, i) => `<text x="600" y="${210 + i * 20}" text-anchor="middle" font-size="24">${icon}</text>`).join('') : '';
 
     const compressor = document.getElementById('compressor');
     compressor.setAttribute('transform', `translate(${180 + compressorState.position * 180}, 0)`);
